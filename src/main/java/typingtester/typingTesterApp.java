@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class typingTesterApp extends Application {
+public class TypingTesterApp extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);

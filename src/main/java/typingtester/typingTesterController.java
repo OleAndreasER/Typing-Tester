@@ -1,10 +1,11 @@
 package typingtester;
 
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class typingTesterController {
+public class TypingTesterController {
     @FXML
     private TextField firstNumber, secondNumber, operator;
 
@@ -12,15 +13,22 @@ public class typingTesterController {
     private Label result, test;
 
     @FXML
+    //unusesd
     private void handleButtonClick() {
         try {
             int result = 5;
             this.test.setText("Hello World");
 
             this.result.setText(String.valueOf(result));
-        } catch (NumberFormatException e) {
+        } 
+        catch (NumberFormatException e) {
             result.setText("Et eller begge tallene er ugyldige");
         }
+    }
+    
+    @FXML
+    private void startTest() {
+        result.setText("Hei");
     }
 
 }
