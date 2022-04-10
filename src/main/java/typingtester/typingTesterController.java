@@ -20,7 +20,7 @@ public class TypingTesterController {
     private Label result, test;
 
     public void handleKeyPress(String c) {
-        test.setText(c);
+        test.setText(new TypingTest().getWords());
     }
     
     @FXML
