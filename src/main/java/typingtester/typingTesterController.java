@@ -6,6 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class TypingTesterController {
+
+    private SceneController sceneController;
+
+    public void setSceneController(SceneController sceneController) {
+        this.sceneController = sceneController;
+    }
+
     @FXML
     private TextField firstNumber, secondNumber, operator;
 
@@ -26,14 +33,13 @@ public class TypingTesterController {
         }
     }
 
-    @FXML
     public void handleKeyPress(String c) {
         test.setText(c);
     }
     
     @FXML
-    private void startTest() {
-        result.setText("Hei");
+    private void enterStats() {
+        sceneController.setStats();
     }
 
 }
