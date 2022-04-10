@@ -28,7 +28,7 @@ public class TypingTesterController {
 
     @FXML
     public void handleKeyPress(String c) {
-        test.setText(c);
+        test.setText(c+"");
     }
     
     @FXML
