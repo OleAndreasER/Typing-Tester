@@ -4,6 +4,7 @@ package typingtester;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class TypingTesterController {
     @FXML
@@ -24,6 +25,11 @@ public class TypingTesterController {
         catch (NumberFormatException e) {
             result.setText("Et eller begge tallene er ugyldige");
         }
+    }
+
+    @FXML
+    public void handleKeyPress(String c) {
+        test.setText(c);
     }
     
     @FXML
