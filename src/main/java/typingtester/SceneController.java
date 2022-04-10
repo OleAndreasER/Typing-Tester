@@ -47,6 +47,8 @@ public class SceneController {
     private Scene getStats() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Stats.fxml"));
         Parent root = loader.load();
+        TypingTesterController controller = loader.getController();
+        controller.setSceneController(this);
         return new Scene(root);
     }
 }

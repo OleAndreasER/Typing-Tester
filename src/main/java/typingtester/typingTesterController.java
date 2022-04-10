@@ -19,20 +19,6 @@ public class TypingTesterController {
     @FXML
     private Label result, test;
 
-    @FXML
-    //unusesd
-    private void handleButtonClick() {
-        try {
-            int result = 5;
-            this.test.setText("Hello World");
-
-            this.result.setText(String.valueOf(result));
-        } 
-        catch (NumberFormatException e) {
-            result.setText("Et eller begge tallene er ugyldige");
-        }
-    }
-
     public void handleKeyPress(String c) {
         test.setText(c);
     }
@@ -40,6 +26,11 @@ public class TypingTesterController {
     @FXML
     private void enterStats() {
         sceneController.setStats();
+    }
+
+    @FXML
+    private void enterTypingTest() {
+        sceneController.setTypingTest();
     }
 
 }
