@@ -17,7 +17,7 @@ public class TypingTesterController {
     private TextField firstNumber, secondNumber, operator;
 
     @FXML
-    private Label result, test;
+    private Label result, test, timeleft;
 
     public void handleKeyPress(String c) {
         test.setText(new TypingTest().getWords());
@@ -26,10 +26,14 @@ public class TypingTesterController {
     }
 
     private void startTestTimer() {
-        EventScheduler finishTestTimer = new EventScheduler(4) {            
+        EventScheduler finishTestTimer = new EventScheduler(60) {            
             @Override
             public void event() {
                 finishTest();
+            }
+
+            public void onSecond(int elapsedSeconds) {
+                timeleft.setText(String.valueOf(60 - elapsedSeconds));
             }
         };
 
