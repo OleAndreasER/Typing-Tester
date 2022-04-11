@@ -21,6 +21,23 @@ public class TypingTesterController {
 
     public void handleKeyPress(String c) {
         test.setText(new TypingTest().getWords());
+        
+        startTestTimer();
+    }
+
+    private void startTestTimer() {
+        EventScheduler finishTestTimer = new EventScheduler(4) {            
+            @Override
+            public void event() {
+                finishTest();
+            }
+        };
+
+        finishTestTimer.start();
+    }
+
+    private void finishTest() {
+        result.setText("FINISHED");
     }
     
     @FXML

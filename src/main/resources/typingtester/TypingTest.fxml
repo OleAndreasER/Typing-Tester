@@ -10,5 +10,6 @@
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterStats" text="Stats" />
       <Label fx:id="test" layoutX="300.0" layoutY="200.0" />
+      <Label fx:id="result" layoutX="300.0" layoutY="200.0" />
    </children>
 </AnchorPane>
