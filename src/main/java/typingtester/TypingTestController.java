@@ -3,6 +3,8 @@ package typingtester;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class TypingTestController {
 
@@ -18,14 +20,17 @@ public class TypingTestController {
     @FXML
     private Label result, test, timeleft, written;
 
-    public void handleKeyPress(String c) {
+    public void handleKeyPress(KeyEvent event) {
         
         if (!testTimerIsOn) {
             startTestTimer();
             testTimerIsOn = true;
         }
 
-        typingTest.type(c);
+        if (event.getCode() == KeyCode.BACK_SPACE) {
+            typingTest.eraseLetter();
+        }
+        typingTest.type(event.getText());
 
         written.setText(typingTest.getTyped());
         test.setText(typingTest.getWords());

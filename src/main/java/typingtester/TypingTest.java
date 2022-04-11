@@ -12,6 +12,10 @@ public class TypingTest {
         typed += c;
     }
 
+    public void eraseLetter() {
+        typed = typed.substring(0, typed.length()-1);
+    }
+
     public String getTyped() {
         return typed;
     }

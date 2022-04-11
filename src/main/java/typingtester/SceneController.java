@@ -35,8 +35,8 @@ public class SceneController {
 
         controller.setSceneController(this);
 
-        scene.setOnKeyTyped(event -> {
-            controller.handleKeyPress(event.getCharacter());
+        scene.setOnKeyPressed(event -> {
+            controller.handleKeyPress(event);
         });
 
         return scene;
