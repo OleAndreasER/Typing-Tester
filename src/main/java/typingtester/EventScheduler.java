@@ -8,7 +8,7 @@ public abstract class EventScheduler extends AnimationTimer {
     private long startTime;
     private boolean startTimeIsSet = false;
     private long duration;
-    private int elapsedSeconds;
+    private int elapsedSeconds = -1; 
 
     public EventScheduler(long seconds) {
         duration = (long) (seconds*1e9);
@@ -29,7 +29,6 @@ public abstract class EventScheduler extends AnimationTimer {
             elapsedSeconds++;
             onSecond(elapsedSeconds);
         }
-
         
         if (timeElapsed >= duration) {
             event();

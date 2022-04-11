@@ -9,18 +9,16 @@ import javafx.stage.Stage;
 
 public class SceneController {
 
-    private Scene typingTest;
     private Scene stats;
     private Stage stage;
 
     public SceneController(Stage stage) throws IOException {
         this.stage = stage;
-        typingTest = getTypingTest();
         stats = getStats();
     }
 
-    public void setTypingTest() {
-        stage.setScene(typingTest);
+    public void setTypingTest() throws IOException {
+        stage.setScene(getTypingTest());
         stage.show();
     }
 
@@ -32,7 +30,7 @@ public class SceneController {
     private Scene getTypingTest() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("TypingTest.fxml"));
         Parent root = loader.load();
-        TypingTesterController controller = loader.getController();
+        TypingTestController controller = loader.getController();
         Scene scene = new Scene(root);
 
         controller.setSceneController(this);
@@ -47,7 +45,7 @@ public class SceneController {
     private Scene getStats() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Stats.fxml"));
         Parent root = loader.load();
-        TypingTesterController controller = loader.getController();
+        StatsController controller = loader.getController();
         controller.setSceneController(this);
         return new Scene(root);
     }
