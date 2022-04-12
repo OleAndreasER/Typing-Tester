@@ -32,7 +32,7 @@ public class TypingTestController {
         }
         typingTest.type(event.getText());
 
-        written.setText(typingTest.getTyped());
+        written.setText(typingTest.getTypedAsDisplayed());
         test.setText(typingTest.getWords());
     }
 

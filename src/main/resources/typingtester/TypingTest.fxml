@@ -9,8 +9,15 @@
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typingtester.TypingTestController">
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterStats" text="Stats" focusTraversable="false" />
-      <Label fx:id="test" layoutX="5.0" layoutY="200.0" />
-      <Label fx:id="written" layoutX="5.0" layoutY="150.0" />
+      <Label fx:id="test" style="-fx-font-size:30; -fx-font-family: monospace; -fx-font-weight: bold;" layoutX="500.0" layoutY="300.0" />
+      <Label fx:id="written" layoutX="0.0" layoutY="300.0" >
+         <style>
+            -fx-font-size:30;
+            -fx-text-alignment: right;
+            -fx-font-family: monospace;
+            -fx-font-weight: bold;
+         </style>
+      </Label>
       <Label fx:id="result" layoutX="300.0" layoutY="100.0" />
       <Label fx:id="timeleft" layoutX="100.0" layoutY="100.0" />
    </children>
