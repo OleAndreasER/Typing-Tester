@@ -30,10 +30,14 @@ public class TypingTestController {
         if (event.getCode() == KeyCode.BACK_SPACE) {
             typingTest.eraseLetter();
         }
-        typingTest.type(event.getText());
+        else if (event.getCode() == KeyCode.TAB) {
+            
+        }
+        else
+            typingTest.type(event.getText());
 
         written.setText(typingTest.getTypedAsDisplayed());
-        test.setText(typingTest.getWords());
+        test.setText(typingTest.getWordsAsDisplayed());
     }
 
     private void startTestTimer() {
@@ -58,7 +62,7 @@ public class TypingTestController {
     
     private void startTest() {
         typingTest = new TypingTest(60);
-        test.setText(typingTest.getWords());
+        test.setText(typingTest.getWordsAsDisplayed());
     }
 
     @FXML
