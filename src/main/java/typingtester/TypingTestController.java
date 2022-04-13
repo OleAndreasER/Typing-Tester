@@ -23,16 +23,16 @@ public class TypingTestController {
     public void handleKeyPress(KeyEvent event) {
         
         if (!testTimerIsOn) {
-            startTestTimer();
+            newTestTimer();
             testTimerIsOn = true;
         }
 
         if (event.getCode() == KeyCode.BACK_SPACE) {
             typingTest.eraseLetter();
         }
-        else if (event.getCode() == KeyCode.TAB) {
-            
-        }
+        else if (event.getCode() == KeyCode.TAB)
+            newTest();
+        else if (event.getCode() == KeyCode.ENTER);
         else
             typingTest.type(event.getText());
 
@@ -40,7 +40,7 @@ public class TypingTestController {
         test.setText(typingTest.getWordsAsDisplayed());
     }
 
-    private void startTestTimer() {
+    private void newTestTimer() {
         EventScheduler finishTestTimer = new EventScheduler(60) {            
             @Override
             public void event() {
@@ -57,12 +57,14 @@ public class TypingTestController {
 
     private void finishTest() {
         result.setText(String.valueOf(typingTest.getWPM()));
+        newTest();
         testTimerIsOn = false;
     }
     
-    private void startTest() {
+    private void newTest() {
         typingTest = new TypingTest(60);
         test.setText(typingTest.getWordsAsDisplayed());
+        written.setText("");
     }
 
     @FXML
@@ -72,6 +74,6 @@ public class TypingTestController {
 
     @FXML
     public void initialize() {
-        startTest();
+        newTest();
     }
 }

@@ -37,8 +37,8 @@ public class TypingTest {
     public void eraseLetter() {
         if (typed.length() == 0) return;
 
-        //If the word is "hello", and you type "he" then " ", you would skip "llo". This makes it so you can go back to
-        //the end of "he" if you erase the " ".
+        //If the word is "hello", and you type "he" then " ", you would skip "llo".
+        //This code under places the caret back like this: "he|llo" if you erase the " ".
         if (typed.charAt(typed.length()-1) == ' ')
             caretIndex += Math.min(currentWordLengthDifference()-1, -1); 
 
