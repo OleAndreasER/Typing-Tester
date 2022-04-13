@@ -22,6 +22,9 @@ public class TypingTest {
     }
 
     public void type(String c) {
+        if (c.length() > 1)
+            throw new IllegalArgumentException("Only one character.");
+
         typed += c;
 
         if (c.equals(" "))
@@ -62,8 +65,8 @@ public class TypingTest {
             if (typedArr[i].equals(wordsArr[i]))
                 correctWords.add(typedArr[i]);
 
-        int correctLetters = String.join(" ", correctWords).length();
-        return (correctLetters / 5) / (seconds/60);
+        float correctLetters = String.join(" ", correctWords).length();
+        return (correctLetters / 5) / ((float)(seconds)/60);
 
     }
 
