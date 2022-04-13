@@ -12,7 +12,7 @@ public class TypingTest {
     private final int typedLength = 28;
 
     public TypingTest(int seconds) {
-        words = WordGenerator.getRandomWords(300);
+        words = WordGenerator.getRandomWords(20);
         this.seconds = seconds;
     }
 
@@ -27,8 +27,10 @@ public class TypingTest {
 
         typed += c;
 
-        if (c.equals(" "))
+        if (c.equals(" ")) {
+            addNewWord();
             caretIndex = words.indexOf(" ", caretIndex) + 1; //Jump to next word
+        }
             
         else if (currentWordLengthDifference() <= 0) //caret shouldn't move over the next word if you overtype a word.
             caretIndex++;
@@ -100,4 +102,7 @@ public class TypingTest {
         return lastTyped.length() - correspondingWord.length();
     }
 
+    private void addNewWord() {
+        words += WordGenerator.getRandomWords(1);
+    }
 }
