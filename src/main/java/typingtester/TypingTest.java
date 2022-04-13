@@ -1,14 +1,24 @@
 package typingtester;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TypingTest {
     private String words;
     private String typed = "";
     private int caretIndex;
+    private int seconds;
 
     private final int typedLength = 28;
 
-    public TypingTest(int wordCount) {
-        words = WordGenerator.getRandomWords(wordCount);
+    public TypingTest(int seconds) {
+        words = WordGenerator.getRandomWords(300);
+        this.seconds = seconds;
+    }
+
+    public TypingTest(int seconds, String words) {
+        this.words = words;
+        this.seconds = seconds;
     }
 
     public void type(String c) {
@@ -28,6 +38,7 @@ public class TypingTest {
         //the end of "he" if you erase the " ".
         if (typed.charAt(typed.length()-1) == ' ')
             caretIndex += Math.min(currentWordLengthDifference()-1, -1); 
+
         else if (currentWordLengthDifference() <= 0)
             caretIndex--;
 
@@ -40,6 +51,20 @@ public class TypingTest {
 
     public String getWords() { 
         return words;
+    }
+
+    public float getWPM() {
+        String[] typedArr = typed.split(" ");
+        String[] wordsArr = words.split(" ");
+
+        List<String> correctWords = new ArrayList<>();
+        for (int i = 0; i < typedArr.length; i++)
+            if (typedArr[i].equals(wordsArr[i]))
+                correctWords.add(typedArr[i]);
+
+        int correctLetters = String.join(" ", correctWords).length();
+        return (correctLetters / 5) / (seconds/60);
+
     }
 
     public String getWordsAsDisplayed() {

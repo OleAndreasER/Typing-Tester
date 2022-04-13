@@ -56,7 +56,7 @@ public class TypingTestController {
     }
 
     private void finishTest() {
-        result.setText("FINISHED");
+        result.setText(String.valueOf(typingTest.getWPM()));
         testTimerIsOn = false;
     }
     
