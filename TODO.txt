@@ -1,5 +1,4 @@
-Better caret graphics.
-Colors Background:blue, text:white, correct text: black
+
 Typing test stats. TypingTest can make TypingTestStats object.
 Saving stats.
 Graphing stats, means, PBs
@@ -7,3 +6,5 @@ Graphing stats, means, PBs
 DONE:
 Make timer observant, and TypingTestController observer.
 Combine written and test.
+Better caret graphics.
+Colors Background:blue, text:white, correct text: black
