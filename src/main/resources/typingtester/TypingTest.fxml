@@ -12,12 +12,20 @@
    </style>
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterStats" text="Stats" focusTraversable="false" />
-      <Label fx:id="test" layoutX="0.0" layoutY="300.0" >
+      <Label fx:id="correctWords" layoutX="0.0" layoutY="300.0" >
          <style>
             -fx-font-size:30;
             -fx-font-family: monospace;
             -fx-font-weight: bold;
             -fx-text-fill: white;
+         </style>
+      </Label>
+      <Label fx:id="incorrectWords" layoutX="0.0" layoutY="300.0" >
+         <style>
+            -fx-font-size:30;
+            -fx-font-family: monospace;
+            -fx-font-weight: bold;
+            -fx-text-fill: black;
          </style>
       </Label>
       <Label layoutX="500.0" layoutY="292" text="|" >

@@ -1,6 +1,7 @@
 package typingtester;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TypingTest {
@@ -77,18 +78,39 @@ public class TypingTest {
     private String getTypedDisplay() {
         int missingChars = typedLength - typed.length();
         
+        String typedCorrected = getTypedCorrectly();
+
         if (missingChars <= 0)
-            return typed.substring(typed.length() - typedLength);
+            return typedCorrected.substring(typedCorrected.length() - typedLength);
         
         String whitespace = "";
         for (int i = 0; i < missingChars; i++)
             whitespace += " ";
 
-        return whitespace + typed;
+        return whitespace + typedCorrected;
+    }
+
+    private String getIncorrectTypedDisplay() {
+        int missingChars = typedLength - typed.length();
+        
+        String typedIncorrect = getTypedIncorrectly();
+
+        if (missingChars <= 0)
+            return typedIncorrect.substring(typedIncorrect.length() - typedLength);
+        
+        String whitespace = "";
+        for (int i = 0; i < missingChars; i++)
+            whitespace += " ";
+
+        return whitespace + typedIncorrect;
     }
     
     public String toString() {
         return getTypedDisplay() + getWordsDisplay();
+    }
+
+    public String incorrectWords() {
+        return getIncorrectTypedDisplay();
     }
 
     private int currentWordLengthDifference() {
@@ -106,5 +128,61 @@ public class TypingTest {
 
     private void addNewWord() {
         words += WordGenerator.getRandomWords(1);
+    }
+
+    private List<String> splitAfter(String s, char separator) {
+        if (s.length() == 0) return new ArrayList<String>();
+
+        String[] splitted = s.split(separator+"");
+        List<String> splittedList = new ArrayList<>(Arrays.asList(splitted));
+        List<String> ret = new ArrayList<>();
+        for (int i = 0; i < splittedList.size()-1; i++) {
+            ret.add(splittedList.get(i) + separator);
+        }
+        String lastElement = splittedList.get(splittedList.size()-1);
+        char lastCharOfS = s.charAt(s.length()-1);
+
+        ret.add(lastElement + (lastCharOfS == separator ? separator : ""));
+        return ret;
+    }
+
+    private String getTypedIncorrectly() {
+        List<String> typedList = splitAfter(typed, ' ');
+        List<String> wordsList = splitAfter(words, ' ');
+
+        String ret = "";
+        for (int i = 0; i < typedList.size(); i++) {
+            String typedWord = typedList.get(i);
+            ret += hideIf(typedWord, isCorrectSoFar(typedWord, wordsList.get(i)));
+        }
+        return ret;
+    }
+
+    private String getTypedCorrectly() {
+        List<String> typedList = splitAfter(typed, ' ');
+        List<String> wordsList = splitAfter(words, ' ');
+
+        String ret = "";
+        for (int i = 0; i < typedList.size(); i++) {
+            String typedWord = typedList.get(i);
+            ret += hideIf(typedWord, !isCorrectSoFar(typedWord, wordsList.get(i)));
+        }
+        return ret;
+    }
+
+    private String hideIf(String s, boolean condition) {
+        if (!condition) return s;
+        String hidden = "";
+        for (int i = 0; i < s.length(); i++)
+            hidden += " ";
+        return hidden;
+    }
+
+    private boolean isCorrectSoFar(String word, String solution) {
+        for (int i = 0; i < word.length(); i++)
+            if (word.charAt(i) != solution.charAt(i))
+                return false;
+        
+        return true;
     }
 }
