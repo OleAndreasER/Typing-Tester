@@ -1,7 +1,6 @@
 package typingtester;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TypingTest {
@@ -58,6 +57,7 @@ public class TypingTest {
 
 
     // --Determining correct/incorrect words
+    // Correct means correct so far
     private String getTypedDisplay(boolean isCorrectWords) {
         int missingChars = typedDisplayLength - typed.length();
         

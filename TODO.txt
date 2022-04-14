@@ -8,4 +8,5 @@ DONE:
 Make timer observant, and TypingTestController observer.
 Combine written and test.
 Better caret graphics.
-Colors Background:blue, text:white, correct text: black
+Colors Background:blue, text:white, correct text: black.
+Colored incorrect words.

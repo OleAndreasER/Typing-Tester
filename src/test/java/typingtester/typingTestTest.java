@@ -32,7 +32,7 @@ public class typingTestTest {
         typeMultiple("word1 word2 word3 wo", typingTest2);
         //"word1 word2 word3 wo"
         Assertions.assertEquals(
-            (float)(5+1+5+1+5+1+2) /5,
+            (float)(5+1+5+1+5) /5,
             typingTest2.getWPM()
         );
         
@@ -67,6 +67,30 @@ public class typingTestTest {
             (float)(5+1+5) /5,
             typingTest2.getWPM()
         );
+    }
+
+    @Test
+    public void testCorrectWords() {
+        TypingTest typingTest = new TypingTest(60,
+            "hello world "
+        );
+
+        typeMultiple("hi wo", typingTest);
+        String correct = typingTest.getCorrectWordsDisplay();
+        String incorrect = typingTest.getIncorrectWordsDisplay();
+
+        Assertions.assertTrue(correct.contains("wo"));
+        Assertions.assertFalse(incorrect.contains("wo"));
+
+        Assertions.assertTrue(incorrect.contains("hi"));
+        Assertions.assertFalse(correct.contains("hi"));
+
+        typingTest.type(" ");
+        String correct2 = typingTest.getCorrectWordsDisplay();
+        String incorrect2 = typingTest.getIncorrectWordsDisplay();
+        Assertions.assertFalse(correct2.contains("wo"));
+        Assertions.assertTrue(incorrect2.contains("wo"));
+
     }
     
 }
