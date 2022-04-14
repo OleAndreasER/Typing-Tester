@@ -38,8 +38,9 @@ public class TypingTestController implements TestTimerListener {
     }
 
     private void displayTest() {
-        correctWords.setText(typingTest.toString());
-        incorrectWords.setText(typingTest.incorrectWords());
+        correctWords.setText(typingTest.getCorrectWordsDisplay()
+                           + typingTest.getWordsDisplay());
+        incorrectWords.setText(typingTest.getIncorrectWordsDisplay());
     }
 
     private void newTestTimer() {

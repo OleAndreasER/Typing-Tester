@@ -43,6 +43,10 @@ public class TypingTest {
             caretIndex++;
     }
 
+    private void addNewWord() {
+        words += WordGenerator.getRandomWords(1);
+    }
+
     public void eraseLetter() {
         if (typed.length() == 0) return;
 
@@ -55,6 +59,19 @@ public class TypingTest {
             caretIndex--;
 
         typed = typed.substring(0, typed.length()-1);
+    }
+
+    private int currentWordLengthDifference() {
+        // typed: hellowor
+        // words: hel
+        // difference: 5
+
+        String[] typedArr = typed.split(" ");
+        String[] wordsArr = words.split(" ");
+        String lastTyped = typedArr[typedArr.length - 1];
+        String correspondingWord = wordsArr[typedArr.length -1];
+
+        return lastTyped.length() - correspondingWord.length();
     }
 
     public float getWPM() {
@@ -71,64 +88,47 @@ public class TypingTest {
 
     }
 
-    private String getWordsDisplay() {
+    public String getWordsDisplay() {
         return words.substring(caretIndex);
     }
 
-    private String getTypedDisplay() {
+    public String getCorrectWordsDisplay() {
+        return getTypedDisplay(true);
+    }
+
+    public String getIncorrectWordsDisplay() {
+        return getTypedDisplay(false);
+    }
+
+    private String getTypedDisplay(boolean isCorrectWords) {
         int missingChars = typedLength - typed.length();
         
-        String typedCorrected = getTypedCorrectly();
+        String typedMasked = getTypedMasked(isCorrectWords);
 
         if (missingChars <= 0)
-            return typedCorrected.substring(typedCorrected.length() - typedLength);
+            return typedMasked.substring(typedMasked.length() - typedLength);
         
         String whitespace = "";
         for (int i = 0; i < missingChars; i++)
             whitespace += " ";
 
-        return whitespace + typedCorrected;
+        return whitespace + typedMasked;
     }
 
-    private String getIncorrectTypedDisplay() {
-        int missingChars = typedLength - typed.length();
-        
-        String typedIncorrect = getTypedIncorrectly();
+    private String getTypedMasked(boolean isCorrectWords) { // masks with " "
+        List<String> typedList = splitAfter(typed, ' ');
+        List<String> wordsList = splitAfter(words, ' ');
 
-        if (missingChars <= 0)
-            return typedIncorrect.substring(typedIncorrect.length() - typedLength);
-        
-        String whitespace = "";
-        for (int i = 0; i < missingChars; i++)
-            whitespace += " ";
-
-        return whitespace + typedIncorrect;
-    }
-    
-    public String toString() {
-        return getTypedDisplay() + getWordsDisplay();
+        String ret = "";
+        for (int i = 0; i < typedList.size(); i++) {
+            String typedWord = typedList.get(i);
+            boolean isCorrectWord = isCorrectSoFar(typedWord, wordsList.get(i));
+            
+            ret += maskIf(typedWord, isCorrectWords ? !isCorrectWord : isCorrectWord);
+        }
+        return ret;
     }
 
-    public String incorrectWords() {
-        return getIncorrectTypedDisplay();
-    }
-
-    private int currentWordLengthDifference() {
-        // typed: hellowor
-        // words: hel
-        // difference: 5
-
-        String[] typedArr = typed.split(" ");
-        String[] wordsArr = words.split(" ");
-        String lastTyped = typedArr[typedArr.length - 1];
-        String correspondingWord = wordsArr[typedArr.length -1];
-
-        return lastTyped.length() - correspondingWord.length();
-    }
-
-    private void addNewWord() {
-        words += WordGenerator.getRandomWords(1);
-    }
 
     private List<String> splitAfter(String s, char separator) {
         if (s.length() == 0) return new ArrayList<String>();
@@ -146,43 +146,19 @@ public class TypingTest {
         return ret;
     }
 
-    private String getTypedIncorrectly() {
-        List<String> typedList = splitAfter(typed, ' ');
-        List<String> wordsList = splitAfter(words, ' ');
-
-        String ret = "";
-        for (int i = 0; i < typedList.size(); i++) {
-            String typedWord = typedList.get(i);
-            ret += hideIf(typedWord, isCorrectSoFar(typedWord, wordsList.get(i)));
-        }
-        return ret;
-    }
-
-    private String getTypedCorrectly() {
-        List<String> typedList = splitAfter(typed, ' ');
-        List<String> wordsList = splitAfter(words, ' ');
-
-        String ret = "";
-        for (int i = 0; i < typedList.size(); i++) {
-            String typedWord = typedList.get(i);
-            ret += hideIf(typedWord, !isCorrectSoFar(typedWord, wordsList.get(i)));
-        }
-        return ret;
-    }
-
-    private String hideIf(String s, boolean condition) {
-        if (!condition) return s;
-        String hidden = "";
-        for (int i = 0; i < s.length(); i++)
-            hidden += " ";
-        return hidden;
-    }
-
     private boolean isCorrectSoFar(String word, String solution) {
         for (int i = 0; i < word.length(); i++)
             if (word.charAt(i) != solution.charAt(i))
                 return false;
         
         return true;
+    }
+
+    private String maskIf(String s, boolean condition) {
+        if (!condition) return s;
+        String masked = "";
+        for (int i = 0; i < s.length(); i++)
+            masked += " ";
+        return masked;
     }
 }
