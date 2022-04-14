@@ -50,14 +50,6 @@ public class TypingTest {
         typed = typed.substring(0, typed.length()-1);
     }
 
-    public String getTyped() {
-        return typed;
-    }
-
-    public String getWords() { 
-        return words;
-    }
-
     public float getWPM() {
         String[] typedArr = typed.split(" ");
         String[] wordsArr = words.split(" ");

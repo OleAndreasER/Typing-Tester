@@ -6,12 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class TypingTestController {
+public class TypingTestController implements TestTimerListener {
 
-    private boolean testTimerIsOn = false;
     private TypingTest typingTest;
 
     private SceneController sceneController;
+
+    private TestTimer testTimer;
 
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
@@ -22,16 +23,15 @@ public class TypingTestController {
 
     public void handleKeyPress(KeyEvent event) {
         
-        if (!testTimerIsOn) {
+        if (!testTimerIsOn()) {
             newTestTimer();
-            testTimerIsOn = true;
         }
 
         if (event.getCode() == KeyCode.BACK_SPACE) {
             typingTest.eraseLetter();
         }
         else if (event.getCode() == KeyCode.TAB)
-            newTest();
+            resetTest();
         else if (event.getCode() == KeyCode.ENTER);
         else
             typingTest.type(event.getText());
@@ -41,30 +41,26 @@ public class TypingTestController {
     }
 
     private void newTestTimer() {
-        EventScheduler finishTestTimer = new EventScheduler(60) {            
-            @Override
-            public void event() {
-                finishTest();
-            }
-
-            public void onSecond(int elapsedSeconds) {
-                timeleft.setText(String.valueOf(60 - elapsedSeconds));
-            }
-        };
-
-        finishTestTimer.start();
+        testTimer = new TestTimer(60, this);
+        testTimer.start();
     }
 
-    private void finishTest() {
-        result.setText(String.valueOf(typingTest.getWPM()));
-        newTest();
-        testTimerIsOn = false;
+    private void endTimer() {
+        testTimer.stop();
+        testTimer = null;
+        timeleft.setText("");
     }
-    
+
+    //Creates new test, but does not start it.
     private void newTest() {
         typingTest = new TypingTest(60);
         test.setText(typingTest.getWordsAsDisplayed());
         written.setText("");
+    }
+
+    private void resetTest() {
+        newTest();
+        endTimer();
     }
 
     @FXML
@@ -76,4 +72,21 @@ public class TypingTestController {
     public void initialize() {
         newTest();
     }
+
+    //Timer listening
+    @Override
+    public void onSecond(int elapsedSeconds) {
+        timeleft.setText(String.valueOf(60 - elapsedSeconds));
+    }
+
+    @Override
+    public void onCompletion() {
+        result.setText(String.valueOf(typingTest.getWPM()));
+        resetTest();
+    }
+
+    private boolean testTimerIsOn() {
+        return testTimer != null;
+    }
+
 }
