@@ -1,10 +1,8 @@
 package typingtester;
 
-import java.util.List;
-
 import javafx.animation.AnimationTimer;
 
-//Calls event method after specified number of seconds, and onSecond on every second.
+//Informs listener on every second, and when the timer is complete.
 
 public class TestTimer extends AnimationTimer {
     private TestTimerListener listener;

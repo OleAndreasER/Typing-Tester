@@ -7,11 +7,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class TypingTestController implements TestTimerListener {
-
     private TypingTest typingTest;
-
     private SceneController sceneController;
-
     private TestTimer testTimer;
 
     public void setSceneController(SceneController sceneController) {
@@ -19,7 +16,7 @@ public class TypingTestController implements TestTimerListener {
     }
 
     @FXML
-    private Label result, test, timeleft, written;
+    private Label result, test, timeleft;
 
     public void handleKeyPress(KeyEvent event) {
         
@@ -36,8 +33,11 @@ public class TypingTestController implements TestTimerListener {
         else
             typingTest.type(event.getText());
 
-        written.setText(typingTest.getTypedAsDisplayed());
-        test.setText(typingTest.getWordsAsDisplayed());
+        displayTest();
+    }
+
+    private void displayTest() {
+        test.setText(typingTest.toString());
     }
 
     private void newTestTimer() {
@@ -54,8 +54,7 @@ public class TypingTestController implements TestTimerListener {
     //Creates new test, but does not start it.
     private void newTest() {
         typingTest = new TypingTest(60);
-        test.setText(typingTest.getWordsAsDisplayed());
-        written.setText("");
+        displayTest();
     }
 
     private void resetTest() {

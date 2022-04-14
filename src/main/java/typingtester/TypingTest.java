@@ -64,11 +64,11 @@ public class TypingTest {
 
     }
 
-    public String getWordsAsDisplayed() {
+    private String getWordsDisplay() {
         return "|"+words.substring(caretIndex);
     }
 
-    public String getTypedAsDisplayed() {
+    private String getTypedDisplay() {
         int missingChars = typedLength - typed.length();
         
         if (missingChars <= 0)
@@ -79,6 +79,10 @@ public class TypingTest {
             whitespace += " ";
 
         return whitespace + typed;
+    }
+    
+    public String toString() {
+        return getTypedDisplay() + getWordsDisplay();
     }
 
     private int currentWordLengthDifference() {
