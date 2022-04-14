@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypingTest {
-    private String words;
-    private String typed = "";
-    private int caretIndex;
-    private int seconds;
 
+    //The typing test is split on the caret. 
+    //Right side:
+    private String words;
+    //Left side:
+    private String typed = "";
     private final int typedLength = 28;
 
+    private int caretIndex; //caret's index on words
+
+    private int seconds;
+
+
     public TypingTest(int seconds) {
-        words = WordGenerator.getRandomWords(20);
+        words = WordGenerator.getRandomWords(10); //More words get added as you type.
         this.seconds = seconds;
     }
 
@@ -32,7 +38,7 @@ public class TypingTest {
             caretIndex = words.indexOf(" ", caretIndex) + 1; //Jump to next word
         }
             
-        else if (currentWordLengthDifference() <= 0) //caret shouldn't move over the next word if you overtype a word.
+        else if (currentWordLengthDifference() <= 0) //caret shouldn't move if you overtype a word.
             caretIndex++;
     }
 
@@ -65,7 +71,7 @@ public class TypingTest {
     }
 
     private String getWordsDisplay() {
-        return "|"+words.substring(caretIndex);
+        return words.substring(caretIndex);
     }
 
     private String getTypedDisplay() {

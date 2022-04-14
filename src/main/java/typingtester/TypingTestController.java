@@ -30,6 +30,7 @@ public class TypingTestController implements TestTimerListener {
         else if (event.getCode() == KeyCode.TAB)
             resetTest();
         else if (event.getCode() == KeyCode.ENTER);
+        else if (event.getCode() == KeyCode.ESCAPE);
         else
             typingTest.type(event.getText());
 
@@ -83,6 +84,7 @@ public class TypingTestController implements TestTimerListener {
         result.setText(String.valueOf(typingTest.getWPM()));
         resetTest();
     }
+    //
 
     private boolean testTimerIsOn() {
         return testTimer != null;
