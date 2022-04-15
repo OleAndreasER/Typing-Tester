@@ -36,8 +36,57 @@ public class TypingTestStatsTest {
             (float)(0+0+3+1+2)/5, 
             stats3.getWPM()    
         );
-
     }
 
+    @Test
+    public void testCorrectWords() { //Different standards from TypingTest
+        TypingTestStats stats = statsAfterTyping(
+            "x o x o x x",
+            "x x x x x x x"
+        );
+
+        Assertions.assertEquals(
+            4,
+            stats.getCorrectWords()
+        );
+
+        Assertions.assertEquals(
+            2,
+            stats.getIncorrectWords()
+        );
+    }
     
+    @Test
+    public void testAccuracy() {
+        TypingTest typingTest = new TypingTest(60, "abc ");
+        typingTest.type("a"); 
+        typingTest.type("c"); //mistake
+        typingTest.eraseLetter();
+        typingTest.type("b");
+        typingTest.type(" "); //mistake
+        typingTest.eraseLetter();
+        typingTest.type("c");
+        typingTest.type("d"); //mistake
+        typingTest.type(" ");
+
+        TypingTestStats stats = typingTest.getStats();
+        float keyPresses = 7;
+        float correct = 4; 
+        Assertions.assertEquals(
+            (correct/keyPresses) * 100, 
+            stats.getAccuracy()
+        );
+    }
+
+    @Test
+    public void testRawWPM() {
+        TypingTestStats stats = statsAfterTyping(
+            "x o x o x x",
+            "x x x x x x x"
+        );
+
+        Assertions.assertEquals(
+            11.0/5.0,
+            stats.getRawWPM());
+    }
 }

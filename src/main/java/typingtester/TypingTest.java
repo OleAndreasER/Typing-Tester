@@ -17,6 +17,10 @@ public class TypingTest {
 
     private int seconds;
 
+    //For accuracy calculations
+    private int correctKeyPresses;
+    private int incorrectKeyPresses;
+
 
     public TypingTest(int seconds) {
         words = WordGenerator.getRandomWords(10); //More words get added as you type.
@@ -42,7 +46,7 @@ public class TypingTest {
     }
 
     public TypingTestStats getStats() {
-        return new TypingTestStats(words, typed, seconds);
+        return new TypingTestStats(words, typed, seconds, correctKeyPresses, incorrectKeyPresses);
     }
 
 
@@ -118,6 +122,9 @@ public class TypingTest {
         if (c.length() > 1)
             throw new IllegalArgumentException("Only one character.");
 
+        if (isCorrectKeyPress(c)) correctKeyPresses++;
+        else incorrectKeyPresses++;
+
         typed += c;
 
         if (c.equals(" ")) {
@@ -127,6 +134,19 @@ public class TypingTest {
             
         else if (currentWordLengthDifference() <= 0) //caret shouldn't move if you overtype a word.
             caretIndex++;
+    }
+
+    private boolean isCorrectKeyPress(String c) {
+        if (currentWordLengthDifference() >= 0) 
+            return c.equals(" ");
+
+        String[] typedArr = typed.split(" ");
+        String[] wordsArr = words.split(" ");
+        String lastTyped = typedArr[typedArr.length - 1];
+        String correspondingWord = wordsArr[typedArr.length -1];
+
+        char nextChar = correspondingWord.charAt(lastTyped.length());
+        return c.equals(nextChar+"");
     }
 
     private void addNewWord() {

@@ -11,7 +11,7 @@ public class TypingTestTest {
     }
 
     @Test
-    public void testCorrectWords() {
+    public void testCorrectWords() { //Different standards from TypingTestStats
         TypingTest typingTest = new TypingTest(60,
             "hello world "
         );
