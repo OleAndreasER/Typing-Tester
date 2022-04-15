@@ -1,6 +1,7 @@
 package typingtester;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TypingTest {
@@ -122,6 +123,7 @@ public class TypingTest {
         if (c.length() > 1)
             throw new IllegalArgumentException("Only one character.");
 
+
         if (isCorrectKeyPress(c)) correctKeyPresses++;
         else incorrectKeyPresses++;
 
@@ -137,13 +139,13 @@ public class TypingTest {
     }
 
     private boolean isCorrectKeyPress(String c) {
-        if (currentWordLengthDifference() >= 0) 
-            return c.equals(" ");
-
-        String[] typedArr = typed.split(" ");
-        String[] wordsArr = words.split(" ");
+        String[] typedArr = split2(typed, ' ');
+        String[] wordsArr = split2(words, ' ');
         String lastTyped = typedArr[typedArr.length - 1];
         String correspondingWord = wordsArr[typedArr.length -1];
+
+        if (lastTyped.length() >= correspondingWord.length())
+            return c.equals(" ");
 
         char nextChar = correspondingWord.charAt(lastTyped.length());
         return c.equals(nextChar+"");
@@ -177,5 +179,17 @@ public class TypingTest {
         String correspondingWord = wordsArr[typedArr.length -1];
 
         return lastTyped.length() - correspondingWord.length();
+    }
+
+    // "hi hi " -> {"hi", "hi", ""} (instead of {"hi", "hi"})
+    private String[] split2(String s, char separator) {
+        if (s.length() == 0) return new String[] {""};
+        
+        List<String> splitList = new ArrayList<>(Arrays.asList(s.split(separator+"")));
+        if (s.charAt(s.length()-1) == separator)
+            splitList.add("");
+
+        String[] ret = new String[splitList.size()];
+        return splitList.toArray(ret); 
     }
 }

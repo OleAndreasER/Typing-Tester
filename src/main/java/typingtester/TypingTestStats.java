@@ -10,9 +10,6 @@ public class TypingTestStats {
     private int correctKeyPresses;
     private int incorrectKeyPresses;
 
-    private double WPM;
-    private double rawWPM;
-    private double accuracy;
     private List<String> correctWords;
     private List<String> incorrectWords;
 
@@ -23,7 +20,6 @@ public class TypingTestStats {
         this.correctKeyPresses = correctKeyPresses;
         this.incorrectKeyPresses = incorrectKeyPresses;
         setCorrectAndIncorrectWords();
-        WPM = calculateWPM();
     }    
 
     private void setCorrectAndIncorrectWords() {
@@ -39,14 +35,10 @@ public class TypingTestStats {
                 incorrectWords.add(typedArr[i]);
     }
     
-    private double calculateWPM() {
+    public double getWPM() {
         //WPM counts 5 letters as one word. Including spaces before correct words.
         double correctLetters = String.join(" ", correctWords).length();
         return (correctLetters / 5) / ((double)(seconds)/60);
-    }
-
-    public double getWPM() {
-        return WPM;
     }
 
     public int getIncorrectWords() {

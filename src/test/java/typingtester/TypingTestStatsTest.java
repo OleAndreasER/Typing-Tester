@@ -58,6 +58,12 @@ public class TypingTestStatsTest {
     
     @Test
     public void testAccuracy() {
+        TypingTestStats stats1 = statsAfterTyping("hello world", "hello world ");
+        Assertions.assertEquals(
+            100.0, 
+            stats1.getAccuracy()
+        );
+
         TypingTest typingTest = new TypingTest(60, "abc ");
         typingTest.type("a"); 
         typingTest.type("c"); //mistake
@@ -69,13 +75,15 @@ public class TypingTestStatsTest {
         typingTest.type("d"); //mistake
         typingTest.type(" ");
 
-        TypingTestStats stats = typingTest.getStats();
+        TypingTestStats stats2 = typingTest.getStats();
         double keyPresses = 7;
         double correct = 4; 
         Assertions.assertEquals(
             (correct/keyPresses) * 100, 
-            stats.getAccuracy()
+            stats2.getAccuracy()
         );
+
+
     }
 
     @Test
