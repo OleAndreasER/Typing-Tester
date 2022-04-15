@@ -10,9 +10,9 @@ public class TypingTestStats {
     private int correctKeyPresses;
     private int incorrectKeyPresses;
 
-    private float WPM;
-    private float rawWPM;
-    private float accuracy;
+    private double WPM;
+    private double rawWPM;
+    private double accuracy;
     private List<String> correctWords;
     private List<String> incorrectWords;
 
@@ -39,13 +39,13 @@ public class TypingTestStats {
                 incorrectWords.add(typedArr[i]);
     }
     
-    private float calculateWPM() {
+    private double calculateWPM() {
         //WPM counts 5 letters as one word. Including spaces before correct words.
-        float correctLetters = String.join(" ", correctWords).length();
-        return (correctLetters / 5) / ((float)(seconds)/60);
+        double correctLetters = String.join(" ", correctWords).length();
+        return (correctLetters / 5) / ((double)(seconds)/60);
     }
 
-    public float getWPM() {
+    public double getWPM() {
         return WPM;
     }
 
@@ -57,12 +57,12 @@ public class TypingTestStats {
         return correctWords.size();
     }
 
-    //TODO
-    public float getRawWPM() {
-        return 0;
+    public double getRawWPM() {
+        double letters = typed.length();
+        return (letters / 5) / ((double)(seconds)/60);
     }
 
-    public float getAccuracy() {
-        return (float)(correctKeyPresses) / (float)(correctKeyPresses+incorrectKeyPresses) * 100;
+    public double getAccuracy() {
+        return (double)(correctKeyPresses) / (double)(correctKeyPresses+incorrectKeyPresses) * 100;
     }
 }

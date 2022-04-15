@@ -21,19 +21,19 @@ public class TypingTestStatsTest {
         TypingTestStats stats1 = statsAfterTyping("hey world", "hello world ");
 
         Assertions.assertEquals(
-            (float)(0+0+5)/5,
+            (double)(0+0+5)/5,
             stats1.getWPM()
         );
 
         TypingTestStats stats2 = statsAfterTyping("hello world ", "hello world ");
         Assertions.assertEquals(
-            (float)(5+1+5)/5, 
+            (double)(5+1+5)/5, 
             stats2.getWPM()    
         );
 
         TypingTestStats stats3 = statsAfterTyping("hello   wor ld ", "he ll o wor ld ");
         Assertions.assertEquals(
-            (float)(0+0+3+1+2)/5, 
+            (double)(0+0+3+1+2)/5, 
             stats3.getWPM()    
         );
     }
@@ -70,8 +70,8 @@ public class TypingTestStatsTest {
         typingTest.type(" ");
 
         TypingTestStats stats = typingTest.getStats();
-        float keyPresses = 7;
-        float correct = 4; 
+        double keyPresses = 7;
+        double correct = 4; 
         Assertions.assertEquals(
             (correct/keyPresses) * 100, 
             stats.getAccuracy()
