@@ -29,20 +29,6 @@ public class TypingTest {
     }
 
 
-    public float getWPM() {
-        String[] typedArr = typed.split(" ");
-        String[] wordsArr = words.split(" ");
-
-        List<String> correctWords = new ArrayList<>();
-        for (int i = 0; i < typedArr.length; i++)
-            if (typedArr[i].equals(wordsArr[i]))
-                correctWords.add(typedArr[i]);
-
-        float correctLetters = String.join(" ", correctWords).length();
-        return (correctLetters / 5) / ((float)(seconds)/60);
-
-    }
-
     public String getWordsDisplay() {
         return words.substring(caretIndex);
     }
@@ -53,6 +39,10 @@ public class TypingTest {
 
     public String getIncorrectWordsDisplay() {
         return getTypedDisplay(false);
+    }
+
+    public TypingTestStats getStats() {
+        return new TypingTestStats(words, typed, seconds);
     }
 
 

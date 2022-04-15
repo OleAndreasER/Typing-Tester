@@ -83,7 +83,8 @@ public class TypingTestController implements TestTimerListener {
 
     @Override
     public void onCompletion() {
-        result.setText(String.valueOf(typingTest.getWPM()));
+        TypingTestStats stats = typingTest.getStats();
+        result.setText(String.valueOf(stats.getWPM()));
         resetTest();
     }
     //
