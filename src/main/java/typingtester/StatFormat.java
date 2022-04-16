@@ -1,5 +1,6 @@
 package typingtester;
 
+import java.util.List;
 
 public interface StatFormat {
 
@@ -11,5 +12,4 @@ public interface StatFormat {
 
     //Inverse of toString
     public void saveInFormat(String stats);
-
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileHandling {
@@ -28,7 +29,18 @@ public class FileHandling {
         return Files.readString(filePath);
     }
 
-    public static List<StatFormat> loadTests() {
+    public static List<MinimalStatFormat> loadTests(StatFormat statFormat) {
+        try {
+            String[] testsStr = fileContent().split("\n");
+            List<MinimalStatFormat> tests = new ArrayList<>();
+            for (String testStr : testsStr) {
+                tests.add(new MinimalStatFormat(testStr));
+            return tests;
+        }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

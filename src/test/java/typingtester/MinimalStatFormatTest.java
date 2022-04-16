@@ -10,7 +10,7 @@ public class MinimalStatFormatTest {
 
         TypingTestStats stats = new TypingTestStats(
             "hello world ",
-            "hi world ",
+            "hi world",
             60,
             7,
             2)

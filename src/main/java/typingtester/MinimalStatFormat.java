@@ -41,5 +41,4 @@ public class MinimalStatFormat implements StatFormat{
             accuracy
         );
     }
-    
 }
