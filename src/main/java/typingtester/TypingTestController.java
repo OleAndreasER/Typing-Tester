@@ -16,7 +16,7 @@ public class TypingTestController implements TestTimerListener {
     }
 
     @FXML
-    private Label result, correctWords, incorrectWords, timeleft;
+    private Label result, whiteWords, blackWords, timeleft;
 
     public void handleKeyPress(KeyEvent event) {
         
@@ -38,9 +38,9 @@ public class TypingTestController implements TestTimerListener {
     }
 
     private void displayTest() {
-        correctWords.setText(typingTest.getCorrectWordsDisplay()
-                           + typingTest.getWordsDisplay());
-        incorrectWords.setText(typingTest.getIncorrectWordsDisplay());
+        whiteWords.setText(typingTest.getIncorrectWordsDisplay()
+                         + typingTest.getWordsDisplay());
+        blackWords.setText(typingTest.getCorrectWordsDisplay());
     }
 
     private void newTestTimer() {

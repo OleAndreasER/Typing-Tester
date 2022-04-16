@@ -82,7 +82,7 @@ public class TypingTest {
         return ret;
     }
 
-
+    // ("hello world", ' ') -> {"hello ", "world"}
     private String[] splitAfter(String s, char separator) {
 
         if (s.length() == 0) return new String[0];
@@ -169,9 +169,9 @@ public class TypingTest {
     }
 
     private int currentWordLengthDifference() {
-        // typed: hellowor
-        // words: hel
-        // difference: 5
+        // typed: ... hellowor
+        // words: ... hello ...
+        // difference: 3
 
         String[] typedArr = typed.split(" ");
         String[] wordsArr = words.split(" ");
@@ -181,7 +181,7 @@ public class TypingTest {
         return lastTyped.length() - correspondingWord.length();
     }
 
-    // "hi hi " -> {"hi", "hi", ""} (instead of {"hi", "hi"})
+    // ("hi hi ", ' ') -> {"hi", "hi", ""} (instead of {"hi", "hi"})
     private String[] split2(String s, char separator) {
         if (s.length() == 0) return new String[] {""};
         
