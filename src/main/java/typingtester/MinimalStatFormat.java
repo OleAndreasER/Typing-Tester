@@ -35,7 +35,11 @@ public class MinimalStatFormat implements StatFormat{
 
     @Override
     public String toString() {
-        return String.valueOf(WPM)+";"+String.valueOf(accuracy);
+        return String.format(
+            "%.2f;%.2f",
+            WPM,
+            accuracy
+        );
     }
     
 }

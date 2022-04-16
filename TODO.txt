@@ -1,8 +1,10 @@
-
-Typing test stats. TypingTest can make TypingTestStats object.
-Saving stats.
+TODO:
+Loading from file.
+Presenting stats better after test.
 Graphing stats, means, PBs
+Fix unknown bug in the test.
 CSS
+
 
 DONE:
 Make timer observant, and TypingTestController observer.
@@ -10,3 +12,5 @@ Combine written and test.
 Better caret graphics.
 Colors Background:blue, text:white, correct text: black.
 Colored incorrect words.
+Typing test stats. TypingTest can make TypingTestStats object.
+Saving stats.

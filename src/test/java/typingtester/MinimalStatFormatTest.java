@@ -18,11 +18,8 @@ public class MinimalStatFormatTest {
 
         MinimalStatFormat minimalStatFormat = new MinimalStatFormat(stats);
 
-        String wpm = String.valueOf(stats.getWPM());
-        String accuracy = String.valueOf(stats.getAccuracy());
-
-        //System.out.println(wpm+";"+accuracy);
-        //System.out.println(minimalStatFormat.toString());
+        String wpm = "1.00";
+        String accuracy = "77.78";
 
         Assertions.assertTrue(
             minimalStatFormat.toString().equals(
@@ -33,7 +30,7 @@ public class MinimalStatFormatTest {
 
     @Test
     public void testSaveInFormat() {
-        String fromFile = "55.0;100.0";
+        String fromFile = "55.00;100.00";
         MinimalStatFormat minimalStatFormat = new MinimalStatFormat(fromFile);
 
         Assertions.assertTrue(

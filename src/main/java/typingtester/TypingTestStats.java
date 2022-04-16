@@ -56,6 +56,7 @@ public class TypingTestStats {
     }
 
     public double getAccuracy() {
-        return (double)(correctKeyPresses) / (double)(correctKeyPresses+incorrectKeyPresses) * 100;
+        return ((double)(correctKeyPresses) / (double)(correctKeyPresses+incorrectKeyPresses) * 100);
     }
+
 }

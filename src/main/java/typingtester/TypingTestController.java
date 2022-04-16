@@ -84,7 +84,7 @@ public class TypingTestController implements TestTimerListener {
     @Override
     public void onCompletion() {
         TypingTestStats stats = typingTest.getStats();
-        String accuracy = String.valueOf(stats.getAccuracy()).substring(0, 5);
+        String accuracy = String.format("%.2f", stats.getAccuracy());
         result.setText(
             "WPM: "+String.valueOf(stats.getWPM())+"\n"+
             "Raw: "+String.valueOf(stats.getRawWPM())+"\n"+
