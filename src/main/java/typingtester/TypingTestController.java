@@ -92,6 +92,9 @@ public class TypingTestController implements TestTimerListener {
             "Correct/Incorrect: "+String.valueOf(stats.getCorrectWords())+
             "/"+String.valueOf(stats.getIncorrectWords())
         );
+
+        FileHandling.saveTest(new MinimalStatFormat(stats));
+
         resetTest();
     }
     //

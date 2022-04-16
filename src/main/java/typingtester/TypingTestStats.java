@@ -28,11 +28,12 @@ public class TypingTestStats {
 
         correctWords = new ArrayList<>();
         incorrectWords = new ArrayList<>();
-        for (int i = 0; i < typedArr.length; i++)
+        for (int i = 0; i < typedArr.length; i++) {
             if (typedArr[i].equals(wordsArr[i]))
                 correctWords.add(typedArr[i]);
             else
                 incorrectWords.add(typedArr[i]);
+        }
     }
     
     public double getWPM() {
