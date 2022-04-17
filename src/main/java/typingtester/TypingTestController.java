@@ -1,6 +1,8 @@
 package typingtester;
 
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -84,6 +86,13 @@ public class TypingTestController implements TestTimerListener {
     @Override
     public void onCompletion() {
         TypingTestStats stats = typingTest.getStats();
+        
+        try {
+            sceneController.setResults(stats);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         String accuracy = String.format("%.2f", stats.getAccuracy());
         result.setText(
             "WPM: "+String.valueOf(stats.getWPM())+"\n"+
