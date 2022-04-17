@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.controller;
 
 
 import java.io.IOException;
@@ -7,6 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import typingtester.SceneController;
+import typingtester.filehandling.FileHandling;
+import typingtester.filehandling.MinimalStatFormat;
+import typingtester.model.TestTimer;
+import typingtester.model.TypingTest;
+import typingtester.model.TypingTestStats;
 
 public class TypingTestController implements TestTimerListener {
     private TypingTest typingTest;

@@ -3,6 +3,8 @@ package typingtester;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import typingtester.model.TypingTest;
+
 public class TypingTestTest {
 
     private void typeMultiple(String string, TypingTest typingTest) {

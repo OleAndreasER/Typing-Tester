@@ -1,4 +1,6 @@
-package typingtester;
+package typingtester.filehandling;
+
+import typingtester.model.TypingTestStats;
 
 public class MinimalStatFormat implements StatFormat{
 

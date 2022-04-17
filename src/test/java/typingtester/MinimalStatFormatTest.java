@@ -3,6 +3,9 @@ package typingtester;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import typingtester.filehandling.MinimalStatFormat;
+import typingtester.model.TypingTestStats;
+
 public class MinimalStatFormatTest {
     
     @Test

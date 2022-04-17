@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.controller;
 
 import java.io.IOException;
 
@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import typingtester.SceneController;
+import typingtester.model.TypingTestStats;
 
 public class ResultsController {
     private SceneController sceneController;

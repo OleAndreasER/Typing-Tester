@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.model;
 
 import java.util.ArrayList;
 import java.util.List;

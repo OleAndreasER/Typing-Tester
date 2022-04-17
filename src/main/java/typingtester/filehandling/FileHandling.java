@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.filehandling;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

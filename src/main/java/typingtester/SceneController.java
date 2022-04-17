@@ -6,6 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import typingtester.controller.ProgressController;
+import typingtester.controller.ResultsController;
+import typingtester.controller.TypingTestController;
+import typingtester.model.TypingTestStats;
 
 public class SceneController {
 
