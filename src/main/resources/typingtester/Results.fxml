@@ -11,6 +11,6 @@
       -fx-background-color: #0d3667;
    </style>
    <children>
-      <Label text="fast" />
+      <Label fx:id="results" layoutX="257.0" layoutY="244.0" />
    </children>
 </AnchorPane>

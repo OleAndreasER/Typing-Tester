@@ -87,24 +87,15 @@ public class TypingTestController implements TestTimerListener {
     public void onCompletion() {
         TypingTestStats stats = typingTest.getStats();
         
+        FileHandling.saveTest(new MinimalStatFormat(stats));
+
+        resetTest();
+
         try {
             sceneController.setResults(stats);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        String accuracy = String.format("%.2f", stats.getAccuracy());
-        result.setText(
-            "WPM: "+String.valueOf(stats.getWPM())+"\n"+
-            "Raw: "+String.valueOf(stats.getRawWPM())+"\n"+
-            "Accuracy: "+accuracy+"%\n"+
-            "Correct/Incorrect: "+String.valueOf(stats.getCorrectWords())+
-            "/"+String.valueOf(stats.getIncorrectWords())
-        );
-
-        FileHandling.saveTest(new MinimalStatFormat(stats));
-
-        resetTest();
     }
     //
 

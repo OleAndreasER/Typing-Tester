@@ -65,8 +65,16 @@ public class SceneController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Results.fxml"));
         Parent root = loader.load();
         ResultsController controller = loader.getController();
+
         controller.setSceneController(this);
         controller.setTypingTestStats(stats);
-        return new Scene(root);
+
+        Scene scene = new Scene(root);
+
+        scene.setOnKeyPressed(event -> {
+            controller.handleKeyPress(event);
+        });
+
+        return scene;
     }
 }

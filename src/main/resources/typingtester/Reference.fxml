@@ -12,7 +12,6 @@
       <TextField fx:id="firstNumber" layoutX="107.0" layoutY="133.0" />
       <TextField fx:id="secondNumber" layoutX="344.0" layoutY="133.0" />
       <TextField fx:id="operator" layoutX="288.0" layoutY="133.0" prefHeight="25.0" prefWidth="26.0" />
-      <Label fx:id="result" layoutX="257.0" layoutY="244.0" />
       <Label fx:id="test" layoutX="300.0" layoutY="300.0" />
       <Text layoutX="170.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tall 1" />
       <Text layoutX="405.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tall 2" />
