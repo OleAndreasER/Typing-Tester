@@ -1,7 +1,5 @@
 package typingtester;
 
-import java.util.List;
-
 public interface StatFormat {
 
     //Converting stats to this stat format.

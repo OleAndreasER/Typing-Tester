@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 
-public class StatsController {
+public class ProgressController {
     private SceneController sceneController;
 
     public void setSceneController(SceneController sceneController) {

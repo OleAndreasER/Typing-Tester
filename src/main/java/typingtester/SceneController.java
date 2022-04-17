@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 
 public class SceneController {
 
-    private Scene stats;
+    private Scene progress;
     private Stage stage;
 
     public SceneController(Stage stage) throws IOException {
         this.stage = stage;
-        stats = getStats();
+        progress = getProgress();
     }
 
     public void setTypingTest() throws IOException {
@@ -22,8 +22,8 @@ public class SceneController {
         stage.show();
     }
 
-    public void setStats() {
-        stage.setScene(stats);
+    public void setProgress() {
+        stage.setScene(progress);
         stage.show();
     }
 
@@ -42,10 +42,10 @@ public class SceneController {
         return scene;
     }
 
-    private Scene getStats() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stats.fxml"));
+    private Scene getProgress() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Progress.fxml"));
         Parent root = loader.load();
-        StatsController controller = loader.getController();
+        ProgressController controller = loader.getController();
         controller.setSceneController(this);
         return new Scene(root);
     }

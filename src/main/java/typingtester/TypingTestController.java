@@ -66,8 +66,8 @@ public class TypingTestController implements TestTimerListener {
     }
 
     @FXML
-    private void enterStats() {
-        sceneController.setStats();
+    private void enterProgress() {
+        sceneController.setProgress();
     }
 
     @FXML

@@ -1,5 +1,4 @@
 TODO:
-Loading from file.
 Presenting stats better after test.
 Graphing stats, means, PBs
 Fix unknown bug in the test.
@@ -7,6 +6,7 @@ CSS
 
 
 DONE:
+Loading from file.
 Make timer observant, and TypingTestController observer.
 Combine written and test.
 Better caret graphics.
