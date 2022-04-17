@@ -11,6 +11,11 @@
       -fx-background-color: #0d3667;
    </style>
    <children>
-      <Label fx:id="results" layoutX="257.0" layoutY="244.0" />
+      <Label fx:id="results" layoutX="257.0" layoutY="244.0" >
+         <style>
+            -fx-font-weight: bold;
+            -fx-text-fill: white;
+         </style>
+      </Label>
    </children>
 </AnchorPane>

@@ -35,12 +35,6 @@
             -fx-text-fill: black;
          </style>
       </Label>
-      <Label fx:id="result" layoutX="300.0" layoutY="100.0" >
-         <style>
-            -fx-font-weight: bold;
-            -fx-text-fill: white;
-         </style>
-      </Label>
       <Label fx:id="timeleft" layoutX="100.0" layoutY="100.0" >
          <style>
             -fx-font-weight: bold;

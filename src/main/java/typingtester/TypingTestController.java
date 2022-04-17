@@ -18,7 +18,7 @@ public class TypingTestController implements TestTimerListener {
     }
 
     @FXML
-    private Label result, whiteWords, blackWords, timeleft;
+    private Label whiteWords, blackWords, timeleft;
 
     public void handleKeyPress(KeyEvent event) {
         
