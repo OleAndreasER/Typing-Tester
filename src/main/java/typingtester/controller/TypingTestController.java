@@ -52,7 +52,7 @@ public class TypingTestController implements TestTimerListener {
     }
 
     private void newTestTimer() {
-        testTimer = new TestTimer(60, this);
+        testTimer = new TestTimer(3, this);
         testTimer.start();
     }
 
@@ -75,7 +75,12 @@ public class TypingTestController implements TestTimerListener {
 
     @FXML
     private void enterProgress() {
-        sceneController.setProgress();
+        try {
+            sceneController.setProgress();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

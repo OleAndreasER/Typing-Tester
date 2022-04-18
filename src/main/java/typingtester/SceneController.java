@@ -21,8 +21,6 @@ public class SceneController {
 
     public SceneController(Stage stage) throws IOException {
         this.stage = stage;
-        progress = getProgress();
-        typingTest = getTypingTest();
     }
 
     public void setTypingTest() throws IOException {
@@ -31,7 +29,8 @@ public class SceneController {
         stage.show();
     }
 
-    public void setProgress() {
+    public void setProgress() throws IOException {
+        progress = getProgress();
         stage.setScene(progress);
         stage.show();
     }

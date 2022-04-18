@@ -14,7 +14,7 @@ public class ResultsController {
     private TypingTestStats stats;
 
     @FXML
-    Label results;
+    Label wpmAndAccuracy, otherStats;
 
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
@@ -27,21 +27,32 @@ public class ResultsController {
 
     public void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB)
-            try {
-                sceneController.setTypingTest();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            newTypingTest();
+    }
+
+    @FXML
+    private void newTypingTest() {
+        try {
+            sceneController.setTypingTest();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void displayResults() {
-        String accuracy = String.format("%.2f", stats.getAccuracy());
-        results.setText(
-            "WPM: "+String.valueOf(stats.getWPM())+"\n"+
-            "Raw: "+String.valueOf(stats.getRawWPM())+"\n"+
-            "Accuracy: "+accuracy+"%\n"+
-            "Correct/Incorrect: "+String.valueOf(stats.getCorrectWords())+
-            "/"+String.valueOf(stats.getIncorrectWords())
+        wpmAndAccuracy.setText(String.format(
+            "%.2f WPM\n%.2f%% accuracy",
+            stats.getWPM(),
+            stats.getAccuracy())
+        );
+
+        otherStats.setText(String.format(
+            "%.2f raw WPM\n%d correct words\n%d incorrect words",
+            stats.getRawWPM(),
+            stats.getCorrectWords(),
+            stats.getIncorrectWords()
+            )
         );
     }
 
