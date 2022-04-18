@@ -1,9 +1,5 @@
 package typingtester.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class TypingTest {
 
     //The typing test is split on the caret. 
@@ -68,9 +64,9 @@ public class TypingTest {
         return whitespace + typedMasked;
     }
 
-    private String getTypedMasked(boolean isCorrectWords) { // masks with " "
-        String[] typedList = splitAfter(typed, ' ');
-        String[] wordsList = splitAfter(words, ' ');
+    private String getTypedMasked(boolean isCorrectWords) { 
+        String[] typedList = Splitting.splitAfter(typed, ' ');
+        String[] wordsList = Splitting.splitAfter(words, ' ');
 
         String ret = "";
         for (int i = 0; i < typedList.length; i++) {
@@ -82,24 +78,6 @@ public class TypingTest {
         return ret;
     }
 
-    // ("hello world", ' ') -> {"hello ", "world"}
-    private String[] splitAfter(String s, char separator) {
-
-        if (s.length() == 0) return new String[0];
-
-        String[] splitted = s.split(separator+"");
-        List<String> splittedList = new ArrayList<>();
-        for (int i = 0; i < splitted.length-1; i++) {
-            splittedList.add(splitted[i] + separator);
-        }
-        String lastElement = splitted[splitted.length-1];
-        char lastCharOfS = s.charAt(s.length()-1);
-
-        splittedList.add(lastElement + (lastCharOfS == separator ? separator : ""));
-
-        String[] ret = new String[splittedList.size()];
-        return splittedList.toArray(ret);
-    }
 
     private boolean isCorrectSoFar(String word, String solution) {
         for (int i = 0; i < word.length(); i++)
@@ -109,6 +87,7 @@ public class TypingTest {
         return true;
     }
 
+    //"helo " -> "     "
     private String maskIf(String s, boolean condition) {
         if (!condition) return s;
         String masked = "";
@@ -139,8 +118,8 @@ public class TypingTest {
     }
 
     private boolean isCorrectKeyPress(String c) {
-        String[] typedArr = split2(typed, ' ');
-        String[] wordsArr = split2(words, ' ');
+        String[] typedArr = Splitting.split2(typed, ' ');
+        String[] wordsArr = Splitting.split2(words, ' ');
         String lastTyped = typedArr[typedArr.length - 1];
         String correspondingWord = wordsArr[typedArr.length -1];
 
@@ -181,15 +160,4 @@ public class TypingTest {
         return lastTyped.length() - correspondingWord.length();
     }
 
-    // ("hi hi ", ' ') -> {"hi", "hi", ""} (instead of {"hi", "hi"})
-    private String[] split2(String s, char separator) {
-        if (s.length() == 0) return new String[] {""};
-        
-        List<String> splitList = new ArrayList<>(Arrays.asList(s.split(separator+"")));
-        if (s.charAt(s.length()-1) == separator)
-            splitList.add("");
-
-        String[] ret = new String[splitList.size()];
-        return splitList.toArray(ret); 
-    }
 }
