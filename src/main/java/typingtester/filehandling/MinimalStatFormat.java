@@ -19,6 +19,14 @@ public class MinimalStatFormat implements StatFormat{
 
     }
 
+    public double getWPM() {
+        return WPM;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
     @Override
     public void saveInFormat(TypingTestStats typingTestStats) {
         WPM = typingTestStats.getWPM();

@@ -1,6 +1,9 @@
 package typingtester.filehandling;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -29,18 +32,23 @@ public class FileHandling {
         return Files.readString(filePath);
     }
 
-    public static List<MinimalStatFormat> loadTests(StatFormat statFormat) {
+    public static List<MinimalStatFormat> loadTests() {
+
+        List<MinimalStatFormat> tests = new ArrayList<>();
+        
         try {
-            String[] testsStr = fileContent().split("\n");
-            List<MinimalStatFormat> tests = new ArrayList<>();
-            for (String testStr : testsStr) {
-                tests.add(new MinimalStatFormat(testStr));
-            return tests;
-        }
-        } 
-        catch (IOException e) {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath.toString()));
+            String line; 
+            while ((line = reader.readLine()) != null) {
+                tests.add(new MinimalStatFormat(line));
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return tests;
     }
 }
