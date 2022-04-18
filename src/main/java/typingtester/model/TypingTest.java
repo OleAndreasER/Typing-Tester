@@ -46,6 +46,10 @@ public class TypingTest {
         return new TypingTestStats(words, typed, seconds, correctKeyPresses, incorrectKeyPresses);
     }
 
+    public int getSeconds() {
+        return seconds;
+    }
+
 
     // --Determining correct/incorrect words
     // Correct means correct so far

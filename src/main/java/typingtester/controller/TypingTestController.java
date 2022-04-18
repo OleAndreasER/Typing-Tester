@@ -52,7 +52,7 @@ public class TypingTestController implements TestTimerListener {
     }
 
     private void newTestTimer() {
-        testTimer = new TestTimer(3, this);
+        testTimer = new TestTimer(typingTest.getSeconds(), this);
         testTimer.start();
     }
 

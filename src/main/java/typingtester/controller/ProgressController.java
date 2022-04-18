@@ -15,7 +15,7 @@ public class ProgressController {
     private SceneController sceneController;
 
     @FXML
-    Label wpmRecord;
+    Label wpmRecord, latestTests;
 
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
@@ -32,6 +32,10 @@ public class ProgressController {
         Progress progress = new Progress(tests);
         String record = String.valueOf(progress.getWpmRecord());
         
+        List<MinimalStatFormat> latest = progress.getLatestTests(5);
+
+        latestTests.setText(Progress.toString(latest));
+
         wpmRecord.setText("PB: "+record);
     }
 
