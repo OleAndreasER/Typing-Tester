@@ -61,7 +61,14 @@ public class SceneController {
         Parent root = loader.load();
         ProgressController controller = loader.getController();
         controller.setSceneController(this);
-        return new Scene(root);
+
+        Scene scene = new Scene(root);
+
+        scene.setOnKeyPressed(event -> {
+            controller.handleKeyPress(event);
+        });
+
+        return scene;
     }
 
     private Scene getResults(TypingTestStats stats) throws IOException {

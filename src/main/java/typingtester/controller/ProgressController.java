@@ -2,6 +2,7 @@ package typingtester.controller;
 
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import typingtester.SceneController;
 import typingtester.filehandling.FileHandling;
 import typingtester.filehandling.MinimalStatFormat;
@@ -42,12 +45,22 @@ public class ProgressController {
         
         String record = String.valueOf(progress.getWpmRecord());
         
-        List<MinimalStatFormat> latest = progress.getLatestTests(5);
+        List<MinimalStatFormat> latest = progress.getLatestTests(10);
 
         latestTests.setText(Progress.toString(latest));
 
         drawChart();
         wpmRecord.setText("PB: "+record);
+    }
+
+    public void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.TAB) {
+            try {
+                enterTypingTest();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void drawChart() {

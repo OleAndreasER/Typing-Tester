@@ -13,7 +13,7 @@
       -fx-background-color: #0d3667;
    </style>
    <children>
-      <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterTypingTest" text="Typing Test" />
+      <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterTypingTest" text="Typing Test" focusTraversable="false"/>
 
       <Label fx:id="wpmRecord" layoutX="50.0" layoutY="100.0" >
          <style>
