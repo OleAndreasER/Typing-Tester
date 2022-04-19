@@ -1,5 +1,6 @@
 package typingtester.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import typingtester.filehandling.MinimalStatFormat;
@@ -23,6 +24,15 @@ public class Progress {
 
         return currentHighest;
     }
+
+    public List<Double> getWPMList() {
+        List<Double> list = new ArrayList<>();
+        for (MinimalStatFormat test : tests)
+            list.add(test.getWPM());
+
+        return list;
+    }
+
     
     public List<MinimalStatFormat> getLatestTests(int n) {
         int size = tests.size();

@@ -29,7 +29,7 @@
          </style>
       </Label>
 
-      <LineChart layoutX="200.0" layoutY="100.0">
+      <LineChart fx:id="chart" layoutX="200.0" layoutY="100.0">
          <style>
             -fx-background-color: #0d3667;
          </style>
