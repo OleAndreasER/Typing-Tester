@@ -1,9 +1,10 @@
 TODO:
-Presenting stats better after test.
-Graphing stats, means, PBs
-Fix unknown bug in the test.
+Average
 CSS
-
+Chart styling
+Better styling in general
+Documentation
+? Fix unknown bug in the test.
 
 DONE:
 Loading from file.
@@ -14,3 +15,5 @@ Colors Background:blue, text:white, correct text: black.
 Colored incorrect words.
 Typing test stats. TypingTest can make TypingTestStats object.
 Saving stats.
+Presenting stats better after test.
+Graphing stats, PBs

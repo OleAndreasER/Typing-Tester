@@ -37,7 +37,7 @@ public class Progress {
     public List<MinimalStatFormat> getLatestTests(int n) {
         int size = tests.size();
         int amountOfTests = Math.min(n, size);
-        List<MinimalStatFormat> lastElements = tests.subList(size-amountOfTests, size);
+        List<MinimalStatFormat> lastElements = new ArrayList<>(tests.subList(size-amountOfTests, size));
         Collections.reverse(lastElements);
         return lastElements;
     }
