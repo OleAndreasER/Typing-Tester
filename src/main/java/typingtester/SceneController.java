@@ -48,6 +48,7 @@ public class SceneController {
         Scene scene = new Scene(root);
 
         controller.setSceneController(this);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         scene.setOnKeyPressed(event -> {
             controller.handleKeyPress(event);
@@ -63,6 +64,7 @@ public class SceneController {
         controller.setSceneController(this);
 
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         scene.setOnKeyPressed(event -> {
             controller.handleKeyPress(event);
@@ -80,6 +82,8 @@ public class SceneController {
         controller.setTypingTestStats(stats);
 
         Scene scene = new Scene(root);
+
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         scene.setOnKeyPressed(event -> {
             controller.handleKeyPress(event);

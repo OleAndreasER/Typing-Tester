@@ -2,7 +2,6 @@ package typingtester.controller;
 
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -47,7 +46,7 @@ public class ProgressController {
         
         List<MinimalStatFormat> latest = progress.getLatestTests(10);
 
-        latestTests.setText(Progress.toString(latest));
+        latestTests.setText("Last 10 tests:\n"+Progress.toString(latest));
 
         drawChart();
         wpmRecord.setText("PB: "+record);

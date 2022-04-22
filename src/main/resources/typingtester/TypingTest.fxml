@@ -7,39 +7,11 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typingtester.controller.TypingTestController">
-   <style>
-      -fx-background-color: #0d3667;
-   </style>
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterProgress" text="Progress" focusTraversable="false" />
-      <Label fx:id="whiteWords" layoutX="0.0" layoutY="300.0" >
-         <style>
-            -fx-font-size:30;
-            -fx-font-family: monospace;
-            -fx-font-weight: bold;
-            -fx-text-fill: white;
-         </style>
-      </Label>
-      <Label fx:id="blackWords" layoutX="0.0" layoutY="300.0" >
-         <style>
-            -fx-font-size:30;
-            -fx-font-family: monospace;
-            -fx-font-weight: bold;
-            -fx-text-fill: black;
-         </style>
-      </Label>
-      <Label layoutX="500.0" layoutY="292" text="|" >
-         <style>
-            -fx-font-weight: bold;
-            -fx-font-size:30;
-            -fx-text-fill: black;
-         </style>
-      </Label>
-      <Label fx:id="timeleft" layoutX="100.0" layoutY="100.0" >
-         <style>
-            -fx-font-weight: bold;
-            -fx-text-fill: white;
-         </style>
-      </Label>
+      <Label fx:id="whiteWords" layoutX="0.0" layoutY="300.0" styleClass="whiteWords" />
+      <Label fx:id="blackWords" layoutX="0.0" layoutY="300.0" styleClass="blackWords" />
+      <Label layoutX="500.0" layoutY="292" text="|" styleClass="caret" />
+      <Label fx:id="timeleft" layoutX="100.0" layoutY="100.0" />
    </children>
 </AnchorPane>

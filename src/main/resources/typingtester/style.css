@@ -1,0 +1,32 @@
+
+.root {
+    -fx-background-color: #0d3667;
+}
+
+Label {
+    -fx-font-weight: bold;
+    -fx-font-size: 30;
+    -fx-text-fill: white;
+    -fx-font-family: arial;
+}
+
+.blackWords {
+    -fx-text-fill: black;
+    -fx-font-family: monospace;
+}
+
+.whiteWords {
+    -fx-font-family: monospace;
+}
+
+.caret {
+    -fx-text-fill: black;
+}
+
+.h1 {
+    -fx-font-size: 40;
+}
+
+.p {
+    -fx-font-size: 15;
+}

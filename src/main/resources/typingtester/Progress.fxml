@@ -15,24 +15,13 @@
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterTypingTest" text="Typing Test" focusTraversable="false"/>
 
-      <Label fx:id="wpmRecord" layoutX="50.0" layoutY="100.0" >
-         <style>
-            -fx-font-weight: bold;
-            -fx-text-fill: white;
-         </style>
+      <Label fx:id="wpmRecord" layoutX="50.0" layoutY="100.0" styleClass="h1" >
       </Label>
 
-      <Label fx:id="latestTests" layoutX="700.0" layoutY="100.0" >
-         <style>
-            -fx-font-weight: bold;
-            -fx-text-fill: white;
-         </style>
+      <Label fx:id="latestTests" layoutX="700.0" layoutY="100.0" styleClass="p">
       </Label>
 
       <LineChart fx:id="chart" layoutX="200.0" layoutY="100.0">
-         <style>
-            -fx-background-color: #0d3667;
-         </style>
          <xAxis>
             <NumberAxis side="BOTTOM" />
          </xAxis>
