@@ -66,18 +66,16 @@ public class ProgressController {
         Axis<Double> yAxis = chart.getYAxis();
         yAxis.setLabel("WPM");
 
-            
         chart.getData().add(wpmSeries());
     }
 
     private XYChart.Series<Integer, Double> wpmSeries() {
         XYChart.Series<Integer, Double> series = new XYChart.Series<>();
-        series.setName("WPM");
 
         List<Double> WPMList = progress.getWPMList();
 
         for (int i = 0; i < WPMList.size(); i++)
-            series.getData().add(new XYChart.Data<>(i, WPMList.get(i)));
+            series.getData().add(new XYChart.Data<>(i+1, WPMList.get(i)));
 
         return series;
     }

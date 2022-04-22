@@ -30,3 +30,25 @@ Label {
 .p {
     -fx-font-size: 15;
 }
+
+.axis-label {
+    -fx-font-size: 10;
+}
+
+.axis {
+    -fx-tick-label-fill: white;
+}
+
+.chart-series-line {
+    -fx-stroke: #0d3667;
+}
+
+Button {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-family: arial;
+    -fx-border-color: black;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}

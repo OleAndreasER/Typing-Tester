@@ -13,7 +13,7 @@ public class TypingTesterApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        stage.setTitle("Type tester");
+        stage.setTitle("");
 
         SceneController sceneController = new SceneController(stage);
         sceneController.setTypingTest();

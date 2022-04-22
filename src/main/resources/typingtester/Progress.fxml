@@ -21,7 +21,7 @@
       <Label fx:id="latestTests" layoutX="700.0" layoutY="100.0" styleClass="p">
       </Label>
 
-      <LineChart fx:id="chart" layoutX="200.0" layoutY="100.0">
+      <LineChart fx:id="chart" layoutX="200.0" layoutY="100.0" createSymbols="false" legendVisible="false" >
          <xAxis>
             <NumberAxis side="BOTTOM" />
          </xAxis>
