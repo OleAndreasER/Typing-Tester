@@ -20,7 +20,7 @@ public class ProgressController {
     private SceneController sceneController;
 
     @FXML
-    Label wpmRecord, latestTests;
+    Label wpmRecord, latestTests, averageWPM;
 
     @FXML 
     LineChart<Integer, Double> chart;
@@ -42,14 +42,16 @@ public class ProgressController {
         List<MinimalStatFormat> tests = FileHandling.loadTests();
         progress = new Progress(tests);
         
-        String record = String.valueOf(progress.getWpmRecord());
-        
-        List<MinimalStatFormat> latest = progress.getLatestTests(10);
+        MinimalStatFormat record = progress.getWpmRecord();
+        wpmRecord.setText("PB\n"+record.asDisplayed());
 
-        latestTests.setText("Last 10 tests:\n"+Progress.toString(latest));
+        List<MinimalStatFormat> latest = progress.getLatestTests(10);
+        latestTests.setText("Last 10 tests\n"
+                           +Progress.toString(latest)+"\n"
+                           +"Average of 10\n"
+                           +Progress.getAverageWPM(latest)+" WPM");
 
         drawChart();
-        wpmRecord.setText("PB: "+record);
     }
 
     public void handleKeyPress(KeyEvent event) {

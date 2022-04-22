@@ -23,7 +23,7 @@ Label {
     -fx-text-fill: black;
 }
 
-.h1 {
+.h {
     -fx-font-size: 40;
 }
 
@@ -52,3 +52,8 @@ Button {
     -fx-background-radius: 0;
     -fx-background-insets: 0;
 }
+
+.center {
+    -fx-text-alignment: center;
+}
+

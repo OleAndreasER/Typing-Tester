@@ -17,12 +17,16 @@ public class Progress {
         this.tests = tests;
     }
 
-    public double getWpmRecord() {
+    public MinimalStatFormat getWpmRecord() {
         double currentHighest = 0;
+        MinimalStatFormat ret = null;
         for (MinimalStatFormat test : tests)
-            currentHighest = Math.max(currentHighest, test.getWPM());
+            if (test.getWPM() > currentHighest) {
+                currentHighest = test.getWPM();
+                ret = test;
+            }
 
-        return currentHighest;
+        return ret;
     }
 
     public List<Double> getWPMList() {
@@ -51,4 +55,11 @@ public class Progress {
         return ret;
     }
 
+    public static double getAverageWPM(List<MinimalStatFormat> tests) {
+        double total = 0;
+        for (MinimalStatFormat test : tests)
+            total += test.getWPM();
+        
+        return total/tests.size();
+    }
 }

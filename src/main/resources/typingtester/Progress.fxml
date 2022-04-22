@@ -15,11 +15,11 @@
    <children>
       <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#enterTypingTest" text="Typing Test" focusTraversable="false"/>
 
-      <Label fx:id="wpmRecord" layoutX="50.0" layoutY="100.0" styleClass="h1"/>
+      <Label fx:id="wpmRecord" layoutX="50.0" layoutY="110.0" styleClass="p, center"/>
+      <Label fx:id="latestTests" layoutX="50.0" layoutY="200.0" styleClass="p, center"/>
+      <Label fx:id="averageWPM" layoutX="50.0" layoutY="500.0" styleClass="p"/>
 
-      <Label fx:id="latestTests" layoutX="700.0" layoutY="100.0" styleClass="p"/>
-
-      <LineChart fx:id="chart" layoutX="200.0" layoutY="100.0" createSymbols="false" legendVisible="false" >
+      <LineChart fx:id="chart" layoutX="300.0" layoutY="100.0" prefWidth="650.0"  createSymbols="false" legendVisible="false" >
          <xAxis>
             <NumberAxis side="BOTTOM" />
          </xAxis>
@@ -27,5 +27,7 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </LineChart>
+
+
    </children>
 </AnchorPane>
