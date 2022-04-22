@@ -48,12 +48,18 @@ public class ResultsController {
         );
 
         otherStats.setText(String.format(
-            "%.2f raw WPM\n%d correct words\n%d incorrect words",
+            "%.2f raw WPM\n"
+           +"%d correct word"+maybePlural(stats.getCorrectWords())+"\n"
+           +"%d incorrect word"+maybePlural(stats.getIncorrectWords()),
             stats.getRawWPM(),
             stats.getCorrectWords(),
             stats.getIncorrectWords()
             )
         );
+    }
+
+    private String maybePlural(int n) {
+        return (n == 1 ? "" : "s");
     }
 
 }

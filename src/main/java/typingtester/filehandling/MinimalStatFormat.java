@@ -54,7 +54,7 @@ public class MinimalStatFormat implements StatFormat{
 
     public String asDisplayed() {
         return String.format(
-            "%.2f WPM - %.2f%% accuracy",
+            "%.2f WPM - %.2f%% ACC",
             WPM,
             accuracy
         );       

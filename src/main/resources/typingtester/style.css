@@ -48,7 +48,7 @@ Button {
     -fx-text-fill: black;
     -fx-font-weight: bold;
     -fx-font-family: arial;
-    -fx-border-color: black;
+    -fx-border-color: transparent;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
 }
