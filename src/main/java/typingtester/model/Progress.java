@@ -17,7 +17,7 @@ public class Progress {
         this.tests = tests;
     }
 
-    public MinimalStatFormat getWpmRecord() {
+    public MinimalStatFormat getWPMRecord() {
         double currentHighest = 0;
         MinimalStatFormat ret = null;
         for (MinimalStatFormat test : tests)
