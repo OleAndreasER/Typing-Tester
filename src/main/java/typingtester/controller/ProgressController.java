@@ -65,21 +65,18 @@ public class ProgressController {
         return headline+"\n"+data+"\n\n";
     }
 
-    //New typing test from Tab or button press
     public void handleKeyPress(KeyEvent event) {
-        if (event.getCode() != KeyCode.TAB) return;
-
-        try {
+        if (event.getCode() == KeyCode.TAB)
             newTypingTest();
-        } 
+    }
+
+    @FXML
+    private void newTypingTest() {
+        try {
+            sceneController.setTypingTest();
+        }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    private void newTypingTest() throws IOException {
-        sceneController.setTypingTest();
-    }
-    //
 }

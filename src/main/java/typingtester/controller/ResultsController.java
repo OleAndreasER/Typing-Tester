@@ -20,9 +20,32 @@ public class ResultsController {
         this.sceneController = sceneController;
     }
 
-    public void setTypingTestStats(TypingTestStats stats) {
+    public void setStats(TypingTestStats stats) {
         this.stats = stats;
-        displayResults();
+    }
+
+    @FXML
+    public void displayStats() {
+        wpmAndAccuracy.setText(String.format(
+            "%.2f WPM\n%.2f%% accuracy",
+            stats.getWPM(),
+            stats.getAccuracy())
+        );
+
+        otherStats.setText(String.format(
+            "%.2f raw WPM\n"
+           +"%d correct word"+maybePlural(stats.getCorrectWords())+"\n"
+           +"%d incorrect word"+maybePlural(stats.getIncorrectWords()),
+
+            stats.getRawWPM(),
+            stats.getCorrectWords(),
+            stats.getIncorrectWords()
+            )
+        );
+    }
+
+    private static String maybePlural(int n) {
+        return n == 1 ? "" : "s";
     }
 
     public void handleKeyPress(KeyEvent event) {
@@ -39,27 +62,4 @@ public class ResultsController {
             e.printStackTrace();
         }
     }
-
-    private void displayResults() {
-        wpmAndAccuracy.setText(String.format(
-            "%.2f WPM\n%.2f%% accuracy",
-            stats.getWPM(),
-            stats.getAccuracy())
-        );
-
-        otherStats.setText(String.format(
-            "%.2f raw WPM\n"
-           +"%d correct word"+maybePlural(stats.getCorrectWords())+"\n"
-           +"%d incorrect word"+maybePlural(stats.getIncorrectWords()),
-            stats.getRawWPM(),
-            stats.getCorrectWords(),
-            stats.getIncorrectWords()
-            )
-        );
-    }
-
-    private String maybePlural(int n) {
-        return (n == 1 ? "" : "s");
-    }
-
 }

@@ -19,13 +19,13 @@ public class Progress {
 
     public MinimalStatFormat getWPMRecord() {
         double currentHighest = 0;
-        MinimalStatFormat ret = null;
-        for (MinimalStatFormat test : tests)
+        MinimalStatFormat ret = new MinimalStatFormat();
+        for (MinimalStatFormat test : tests) {
             if (test.getWPM() > currentHighest) {
                 currentHighest = test.getWPM();
                 ret = test;
             }
-
+        }
         return ret;
     }
 

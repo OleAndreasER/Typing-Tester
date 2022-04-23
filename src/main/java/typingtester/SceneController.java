@@ -79,7 +79,8 @@ public class SceneController {
         ResultsController controller = loader.getController();
 
         controller.setSceneController(this);
-        controller.setTypingTestStats(stats);
+        controller.setStats(stats);
+        controller.displayStats();
 
         Scene scene = new Scene(root);
 
