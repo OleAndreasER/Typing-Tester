@@ -4,12 +4,12 @@ import typingtester.model.TypingTestStats;
 
 public interface StatFormat {
 
-    //Converting stats to this stat format.
-    public void saveInFormat(TypingTestStats typingTestStats);
+    //Set from TypingTestStats
+    public void setStats(TypingTestStats typingTestStats);
 
-    //As it is to be written to a file.
+    //As file string.
     public String toString(); 
 
-    //Inverse of toString
-    public void saveInFormat(String stats);
+    //Set from file string.
+    public void setStats(String stats);
 }

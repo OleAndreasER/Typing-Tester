@@ -8,11 +8,11 @@ public class MinimalStatFormat implements StatFormat{
     private double accuracy;
 
     public MinimalStatFormat(TypingTestStats typingTestStats) {
-        saveInFormat(typingTestStats);
+        setStats(typingTestStats);
     }
 
     public MinimalStatFormat(String stats) {
-        saveInFormat(stats);
+        setStats(stats);
     }
 
     public MinimalStatFormat() {
@@ -28,13 +28,13 @@ public class MinimalStatFormat implements StatFormat{
     }
 
     @Override
-    public void saveInFormat(TypingTestStats typingTestStats) {
+    public void setStats(TypingTestStats typingTestStats) {
         WPM = typingTestStats.getWPM();
         accuracy = typingTestStats.getAccuracy();
     }
 
     @Override
-    public void saveInFormat(String stats) {
+    public void setStats(String stats) {
         String[] values = stats.split(";");
         if (values.length != 2)
             throw new IllegalArgumentException("Wrong format.");

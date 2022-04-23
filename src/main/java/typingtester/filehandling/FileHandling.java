@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileHandling {
+
     private static final Path filePath = Paths.get("tests.txt");
-        
 
     public static void saveTest(StatFormat statFormat) {
         try {
@@ -33,19 +33,20 @@ public class FileHandling {
     }
 
     public static List<MinimalStatFormat> loadTests() {
-
         List<MinimalStatFormat> tests = new ArrayList<>();
         
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath.toString()));
             String line; 
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null)
                 tests.add(new MinimalStatFormat(line));
-            }
+
             reader.close();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
 
