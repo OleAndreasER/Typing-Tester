@@ -103,7 +103,7 @@ public class TypingTest {
 
     // --Controlling the test
     public void type(String c) {
-        if (c.length() > 1)
+        if (c.length() != 1)
             throw new IllegalArgumentException("Only one character.");
 
 

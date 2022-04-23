@@ -20,7 +20,7 @@ public class ProgressController {
     private SceneController sceneController;
 
     @FXML
-    Label wpmRecord, latestTests, averageWPM;
+    Label wpmRecord, latestTests;
 
     @FXML 
     LineChart<Integer, Double> chart;

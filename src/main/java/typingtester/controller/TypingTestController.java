@@ -16,8 +16,9 @@ import typingtester.model.TypingTestStats;
 
 public class TypingTestController implements TestTimerListener {
     private TypingTest typingTest;
-    private SceneController sceneController;
     private TestTimer testTimer;
+    private SceneController sceneController;
+    private static final int testTime = 60;
 
     public void setSceneController(SceneController sceneController) {
         this.sceneController = sceneController;
@@ -27,20 +28,23 @@ public class TypingTestController implements TestTimerListener {
     private Label whiteWords, blackWords, timeleft;
 
     public void handleKeyPress(KeyEvent event) {
-        
-        if (!testTimerIsOn()) {
-            newTestTimer();
-        }
 
         if (event.getCode() == KeyCode.BACK_SPACE) {
             typingTest.eraseLetter();
         }
-        else if (event.getCode() == KeyCode.TAB)
+        else if (event.getCode() == KeyCode.TAB) {
             resetTest();
-        else if (event.getCode() == KeyCode.ENTER);
-        else if (event.getCode() == KeyCode.ESCAPE);
-        else
+            return;
+        }
+        else if (event.getCode() == KeyCode.ENTER) return; // "\n" is one char
+        
+        else if (event.getText().length() == 1)
             typingTest.type(event.getText());
+
+        else return;
+
+        
+        if (!testTimerIsOn()) startNewTestTimer();
 
         displayTest();
     }
@@ -51,7 +55,7 @@ public class TypingTestController implements TestTimerListener {
         blackWords.setText(typingTest.getCorrectWordsDisplay());
     }
 
-    private void newTestTimer() {
+    private void startNewTestTimer() {
         testTimer = new TestTimer(typingTest.getSeconds(), this);
         testTimer.start();
     }
@@ -64,17 +68,18 @@ public class TypingTestController implements TestTimerListener {
 
     //Creates new test, but does not start it.
     private void newTest() {
-        typingTest = new TypingTest(60);
+        typingTest = new TypingTest(testTime);
         displayTest();
     }
 
     private void resetTest() {
         newTest();
-        endTimer();
+        if (testTimerIsOn()) endTimer();
     }
 
     @FXML
     private void enterProgress() {
+        resetTest();
         try {
             sceneController.setProgress();
         }
@@ -91,7 +96,7 @@ public class TypingTestController implements TestTimerListener {
     //Timer listening
     @Override
     public void onSecond(int elapsedSeconds) {
-        timeleft.setText(String.valueOf(60 - elapsedSeconds));
+        timeleft.setText(String.valueOf(testTime - elapsedSeconds));
     }
 
     @Override
@@ -104,7 +109,8 @@ public class TypingTestController implements TestTimerListener {
 
         try {
             sceneController.setResults(stats);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
