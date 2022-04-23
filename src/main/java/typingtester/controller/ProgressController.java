@@ -33,20 +33,20 @@ public class ProgressController {
 
     @FXML
     public void initialize() {
-        List<MinimalStatFormat> tests = FileHandling.loadTests();
-        progress = new Progress(tests);
+        progress = FileHandling.loadTests();
         
         plotWPMSeries();
 
         //Stats text
         MinimalStatFormat record = progress.getWPMRecord();
         String testCount = String.valueOf(progress.getTestCount());
-        List<MinimalStatFormat> latest = progress.getLatestTests(10);
-        String averageWPM = String.format("%.2f", Progress.getAverageWPM(latest));
+        Progress latest = progress.getLatestTests(10);
+        latest.reverse();
+        String averageWPM = String.format("%.2f", latest.getAverageWPM());
 
         progressStats.setText(statSegment("PB", record.asDisplayed())
                              +statSegment("Tests completed", testCount)
-                             +statSegment("Last 10 tests", Progress.toString(latest))
+                             +statSegment("Last 10 tests", latest.toString())
                              +statSegment("Average of 10", averageWPM));
     }
 

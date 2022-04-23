@@ -10,10 +10,6 @@ public class Progress {
     private List<MinimalStatFormat> tests;
 
     public Progress(List<MinimalStatFormat> tests) {
-        setTests(tests);
-    }
-
-    public void setTests(List<MinimalStatFormat> tests) {
         this.tests = tests;
     }
 
@@ -41,15 +37,18 @@ public class Progress {
         return tests.size();
     }
     
-    public List<MinimalStatFormat> getLatestTests(int n) {
+    public Progress getLatestTests(int n) {
         int size = tests.size();
         int amountOfTests = Math.min(n, size);
         List<MinimalStatFormat> lastElements = new ArrayList<>(tests.subList(size-amountOfTests, size));
-        Collections.reverse(lastElements);
-        return lastElements;
+        return new Progress(lastElements);
     }
 
-    public static String toString(List<MinimalStatFormat> tests) {
+    public void reverse() {
+        Collections.reverse(tests);
+    }
+
+    public String toString() {
         String ret = "";
         for (MinimalStatFormat test : tests) {
             ret += test.asDisplayed()+"\n";
@@ -58,7 +57,7 @@ public class Progress {
         return ret.substring(0,ret.length()-1); //removing last \n
     }
 
-    public static double getAverageWPM(List<MinimalStatFormat> tests) {
+    public double getAverageWPM() {
         double total = 0;
         for (MinimalStatFormat test : tests)
             total += test.getWPM();

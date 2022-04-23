@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import typingtester.model.Progress;
+
 public class FileHandling {
 
     private static final Path filePath = Paths.get("tests.txt");
@@ -32,7 +34,7 @@ public class FileHandling {
         return Files.readString(filePath);
     }
 
-    public static List<MinimalStatFormat> loadTests() {
+    public static Progress loadTests() {
         List<MinimalStatFormat> tests = new ArrayList<>();
         
         try {
@@ -50,6 +52,6 @@ public class FileHandling {
             e.printStackTrace();
         }
 
-        return tests;
+        return new Progress(tests);
     }
 }
