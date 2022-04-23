@@ -20,7 +20,7 @@ public class ProgressController {
     private SceneController sceneController;
 
     @FXML
-    Label wpmRecord, latestTests;
+    Label progressStats;
 
     @FXML 
     LineChart<Integer, Double> chart;
@@ -42,28 +42,36 @@ public class ProgressController {
         List<MinimalStatFormat> tests = FileHandling.loadTests();
         progress = new Progress(tests);
         
-        MinimalStatFormat record = progress.getWpmRecord();
-        wpmRecord.setText("PB\n"+record.asDisplayed());
 
+        MinimalStatFormat record = progress.getWpmRecord();
+        String testCount = String.valueOf(progress.getTestCount());
         List<MinimalStatFormat> latest = progress.getLatestTests(10);
-        latestTests.setText("Last 10 tests\n"
-                           +Progress.toString(latest)+"\n"
-                           +"Average of 10\n"
-                           +Progress.getAverageWPM(latest)+" WPM");
+        String averageWPM = String.format("%.2f", Progress.getAverageWPM(latest));
+
+        progressStats.setText(statSegment("PB", record.asDisplayed())
+                             +statSegment("Tests completed", testCount)
+                             +statSegment("Last 10 tests", Progress.toString(latest))
+                             +statSegment("Average of 10", averageWPM));
 
         drawChart();
+    }
+
+    private String statSegment(String headline, String data) {
+        return headline+"\n"+data+"\n\n";
     }
 
     public void handleKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB) {
             try {
                 enterTypingTest();
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    //line chart
     private void drawChart() {
         Axis<Double> yAxis = chart.getYAxis();
         yAxis.setLabel("WPM");

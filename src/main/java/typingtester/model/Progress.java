@@ -37,6 +37,9 @@ public class Progress {
         return list;
     }
 
+    public int getTestCount() {
+        return tests.size();
+    }
     
     public List<MinimalStatFormat> getLatestTests(int n) {
         int size = tests.size();
@@ -52,7 +55,7 @@ public class Progress {
             ret += test.asDisplayed()+"\n";
         }
 
-        return ret;
+        return ret.substring(0,ret.length()-1); //removing last \n
     }
 
     public static double getAverageWPM(List<MinimalStatFormat> tests) {
