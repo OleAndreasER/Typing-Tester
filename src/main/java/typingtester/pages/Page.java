@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.pages;
 
 import javafx.scene.Scene;
 import typingtester.controller.PageController;

@@ -1,4 +1,4 @@
-package typingtester;
+package typingtester.pages;
 
 import java.io.IOException;
 
@@ -6,8 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import typingtester.controller.ResultsController;
 import typingtester.controller.PageController;
+import typingtester.controller.ResultsController;
 import typingtester.model.TypingTestStats;
 
 public class PageSwitcher {

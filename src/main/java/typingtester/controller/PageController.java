@@ -1,7 +1,7 @@
 package typingtester.controller;
 
 import javafx.scene.input.KeyEvent;
-import typingtester.PageSwitcher;
+import typingtester.pages.PageSwitcher;
 
 public abstract class PageController {
     protected PageSwitcher sceneController;
