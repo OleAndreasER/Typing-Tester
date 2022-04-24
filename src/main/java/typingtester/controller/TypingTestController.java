@@ -7,21 +7,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import typingtester.SceneController;
 import typingtester.filehandling.MinimalFileHandler;
-import typingtester.model.TestTimer;
 import typingtester.model.TypingTest;
 import typingtester.model.TypingTestStats;
+import typingtester.timing.TestTimer;
+import typingtester.timing.TestTimerListener;
 
-public class TypingTestController implements TestTimerListener {
+public class TypingTestController extends SceneControllerController implements TestTimerListener {
     private TypingTest typingTest;
     private TestTimer testTimer;
-    private SceneController sceneController;
     private static final int testTime = 60;
-
-    public void setSceneController(SceneController sceneController) {
-        this.sceneController = sceneController;
-    }
 
     @FXML
     private Label whiteWords, blackWords, timeleft;

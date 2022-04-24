@@ -10,12 +10,11 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import typingtester.SceneController;
 import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.MinimalTestStats;
 import typingtester.model.Progress;
 
-public class ProgressController {
+public class ProgressController extends SceneControllerController {
 
     @FXML
     Label progressStats;
@@ -24,12 +23,6 @@ public class ProgressController {
     LineChart<Integer, Double> progressChart;
 
     Progress progress;
-
-    private SceneController sceneController;
-
-    public void setSceneController(SceneController sceneController) {
-        this.sceneController = sceneController;
-    }
 
     @FXML
     public void initialize() {

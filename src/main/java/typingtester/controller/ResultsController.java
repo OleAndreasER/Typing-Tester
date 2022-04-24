@@ -6,21 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import typingtester.SceneController;
 import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.Progress;
 import typingtester.model.TypingTestStats;
 
-public class ResultsController {
-    private SceneController sceneController;
+public class ResultsController extends SceneControllerController {
     private TypingTestStats stats;
 
     @FXML
     Label wpmAndAccuracy, otherStats;
-
-    public void setSceneController(SceneController sceneController) {
-        this.sceneController = sceneController;
-    }
 
     public void setStats(TypingTestStats stats) {
         this.stats = stats;

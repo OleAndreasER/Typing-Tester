@@ -1,7 +1,6 @@
-package typingtester.model;
+package typingtester.timing;
 
 import javafx.animation.AnimationTimer;
-import typingtester.controller.TestTimerListener;
 
 //Informs listener on every second, and when the timer is complete.
 
