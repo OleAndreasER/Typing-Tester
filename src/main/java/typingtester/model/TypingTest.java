@@ -73,14 +73,14 @@ public class TypingTest {
         String[] typedList = Splitting.splitAfter(typed, ' ');
         String[] wordsList = Splitting.splitAfter(words, ' ');
 
-        String ret = "";
+        String typedMasked = "";
         for (int i = 0; i < typedList.length; i++) {
             String typedWord = typedList[i];
             boolean isCorrectWord = isCorrectSoFar(typedWord, wordsList[i]);
             
-            ret += maskIf(typedWord, isCorrectWords ? isCorrectWord : !isCorrectWord);
+            typedMasked += maskIf(typedWord, isCorrectWords ? isCorrectWord : !isCorrectWord);
         }
-        return ret;
+        return typedMasked;
     }
 
     private boolean isCorrectSoFar(String word, String solution) {

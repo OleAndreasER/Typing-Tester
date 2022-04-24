@@ -14,8 +14,8 @@ public class Splitting {
         if (s.charAt(s.length()-1) == separator)
             splitList.add("");
 
-        String[] ret = new String[splitList.size()];
-        return splitList.toArray(ret); 
+        String[] splittedArray = new String[splitList.size()];
+        return splitList.toArray(splittedArray); 
     }
 
     // ("hello world", ' ') -> {"hello ", "world"}
@@ -32,7 +32,7 @@ public class Splitting {
 
         splittedList.add(lastElement + (lastCharOfS == separator ? separator : ""));
 
-        String[] ret = new String[splittedList.size()];
-        return splittedList.toArray(ret);
+        String[] splittedArray = new String[splittedList.size()];
+        return splittedList.toArray(splittedArray);
     }
 }

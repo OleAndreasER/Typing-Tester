@@ -15,14 +15,14 @@ public class Progress {
 
     public MinimalStatFormat getWPMRecord() {
         double currentHighest = 0;
-        MinimalStatFormat ret = new MinimalStatFormat();
+        MinimalStatFormat record = new MinimalStatFormat();
         for (MinimalStatFormat test : tests) {
             if (test.getWPM() > currentHighest) {
                 currentHighest = test.getWPM();
-                ret = test;
+                record = test;
             }
         }
-        return ret;
+        return record;
     }
 
     public List<Double> getWPMList() {
@@ -49,12 +49,12 @@ public class Progress {
     }
 
     public String toString() {
-        String ret = "";
+        String str = "";
         for (MinimalStatFormat test : tests) {
-            ret += test.asDisplayed()+"\n";
+            str += test.asDisplayed()+"\n";
         }
 
-        return ret.substring(0,ret.length()-1); //removing last \n
+        return str.substring(0, str.length()-1); //removing last \n
     }
 
     public double getAverageWPM() {

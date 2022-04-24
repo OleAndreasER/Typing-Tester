@@ -5,14 +5,15 @@ import java.util.Random;
 public class WordGenerator {
     public static String getRandomWords(int wordCount) {
         Random random = new Random();
-        String ret = "";
-        for (int i = 0; i < wordCount; i++) {
-            ret += words[random.nextInt(words.length)] + " ";
-        }
-        return ret;
+        String randomWords = "";
+        for (int i = 0; i < wordCount; i++)
+            randomWords += words[random.nextInt(words.length)] + " ";
+        
+        return randomWords;
     }
 
     // Source: https://github.com/dariusk/corpora/blob/master/data/words/common.json
+    // Slightly modified
     private final static String[] words = {
         "a",
         "able",
