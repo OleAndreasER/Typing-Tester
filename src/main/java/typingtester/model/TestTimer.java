@@ -36,5 +36,4 @@ public class TestTimer extends AnimationTimer {
             stop();
         }
     }
-    
 }

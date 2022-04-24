@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import typingtester.SceneController;
-import typingtester.filehandling.FileHandling;
+import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.Progress;
 import typingtester.model.TypingTestStats;
 
@@ -48,7 +48,9 @@ public class ResultsController {
     }
 
     private static String maybePB(double WPM) {
-        Progress progress = FileHandling.loadTests();
+
+        MinimalFileHandler fileHandler = new MinimalFileHandler();
+        Progress progress = fileHandler.loadTests();
         return progress.isWPMRecord(WPM) ? " (PB!!)" : "";
     }
 

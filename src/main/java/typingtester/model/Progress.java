@@ -3,20 +3,19 @@ package typingtester.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import typingtester.filehandling.MinimalStatFormat;
 
 public class Progress {
 
-    private List<MinimalStatFormat> tests;
+    private List<MinimalTestStats> tests;
 
-    public Progress(List<MinimalStatFormat> tests) {
+    public Progress(List<MinimalTestStats> tests) {
         this.tests = tests;
     }
 
-    public MinimalStatFormat getWPMRecord() {
+    public MinimalTestStats getWPMRecord() {
         double currentHighest = 0;
-        MinimalStatFormat record = null;
-        for (MinimalStatFormat test : tests) {
+        MinimalTestStats record = null;
+        for (MinimalTestStats test : tests) {
             if (test.getWPM() > currentHighest) {
                 currentHighest = test.getWPM();
                 record = test;
@@ -31,7 +30,7 @@ public class Progress {
 
     public List<Double> getWPMList() {
         List<Double> list = new ArrayList<>();
-        for (MinimalStatFormat test : tests)
+        for (MinimalTestStats test : tests)
             list.add(test.getWPM());
 
         return list;
@@ -44,7 +43,7 @@ public class Progress {
     public Progress getLatestTests(int n) {
         int size = tests.size();
         int amountOfTests = Math.min(n, size);
-        List<MinimalStatFormat> lastElements = new ArrayList<>(tests.subList(size-amountOfTests, size));
+        List<MinimalTestStats> lastElements = new ArrayList<>(tests.subList(size-amountOfTests, size));
         return new Progress(lastElements);
     }
 
@@ -55,7 +54,7 @@ public class Progress {
     public String toString() {
         if (tests.isEmpty()) return "";
         String str = "";
-        for (MinimalStatFormat test : tests) {
+        for (MinimalTestStats test : tests) {
             str += test.asDisplayed()+"\n";
         }
 
@@ -64,10 +63,9 @@ public class Progress {
 
     public double getAverageWPM() {
         double total = 0;
-        for (MinimalStatFormat test : tests)
+        for (MinimalTestStats test : tests)
             total += test.getWPM();
         
         return total/tests.size();
     }
-
 }

@@ -11,8 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import typingtester.SceneController;
-import typingtester.filehandling.FileHandling;
-import typingtester.filehandling.MinimalStatFormat;
+import typingtester.filehandling.MinimalFileHandler;
+import typingtester.model.MinimalTestStats;
 import typingtester.model.Progress;
 
 public class ProgressController {
@@ -33,7 +33,9 @@ public class ProgressController {
 
     @FXML
     public void initialize() {
-        progress = FileHandling.loadTests();
+
+        MinimalFileHandler fileHandler = new MinimalFileHandler();
+        progress = fileHandler.loadTests();
         
         plotWPMSeries();
 
@@ -42,7 +44,7 @@ public class ProgressController {
             progressStats.setText("No tests!");
             return;
         }
-        MinimalStatFormat record = progress.getWPMRecord();
+        MinimalTestStats record = progress.getWPMRecord();
         String testCount = String.valueOf(progress.getTestCount());
         Progress latest = progress.getLatestTests(10);
         latest.reverse();

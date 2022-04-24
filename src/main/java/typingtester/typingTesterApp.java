@@ -21,5 +21,4 @@ public class TypingTesterApp extends Application {
         SceneController sceneController = new SceneController(stage);
         sceneController.setTypingTest();
     }
-
 }

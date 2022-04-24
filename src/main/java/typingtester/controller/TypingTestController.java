@@ -8,8 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import typingtester.SceneController;
-import typingtester.filehandling.FileHandling;
-import typingtester.filehandling.MinimalStatFormat;
+import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.TestTimer;
 import typingtester.model.TypingTest;
 import typingtester.model.TypingTestStats;
@@ -103,7 +102,8 @@ public class TypingTestController implements TestTimerListener {
     public void onCompletion() {
         TypingTestStats stats = typingTest.getStats();
         
-        FileHandling.saveTest(new MinimalStatFormat(stats));
+        MinimalFileHandler fileHandler = new MinimalFileHandler();
+        fileHandler.saveTest(stats);
 
         resetTest();
 
@@ -119,5 +119,4 @@ public class TypingTestController implements TestTimerListener {
     private boolean testTimerIsOn() {
         return testTimer != null;
     }
-
 }

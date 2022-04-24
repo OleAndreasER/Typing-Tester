@@ -162,5 +162,4 @@ public class TypingTest {
 
         return lastTyped.length() - correspondingWord.length();
     }
-
 }
