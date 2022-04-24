@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Splitting {
+public abstract class Splitting {
     
     // ("hi hi ", ' ') -> {"hi", "hi", ""} (instead of {"hi", "hi"})
     public static String[] split2(String s, char separator) {

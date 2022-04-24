@@ -2,7 +2,7 @@ package typingtester.model;
 
 import java.util.Random;
 
-public class WordGenerator {
+public abstract class WordGenerator {
     public static String getRandomWords(int wordCount) {
         Random random = new Random();
         String randomWords = "";

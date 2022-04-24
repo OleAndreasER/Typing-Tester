@@ -18,3 +18,5 @@ CSS
 Chart styling
 Better styling in general
 ? Fix unknown bug in the test. (Was probably a bug with alt key)
+Refactor File handling
+Refactor Scene Controller
