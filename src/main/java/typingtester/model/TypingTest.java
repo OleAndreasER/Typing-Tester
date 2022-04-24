@@ -51,12 +51,13 @@ public class TypingTest {
     }
 
 
-    // --Determining correct/incorrect words
-    // Correct means correct so far
+    // --Determining correctness of typed words.
+    //   Correct means correct so far. 
+    //   Masked means that characters are replaced by " "
     private String getTypedDisplay(boolean isCorrectWords) {
         int missingChars = typedDisplayLength - typed.length();
         
-        String typedMasked = getTypedMasked(isCorrectWords);
+        String typedMasked = getTypedMaskedIf(!isCorrectWords);
 
         if (missingChars <= 0)
             return typedMasked.substring(typedMasked.length() - typedDisplayLength);
@@ -68,7 +69,7 @@ public class TypingTest {
         return whitespace + typedMasked;
     }
 
-    private String getTypedMasked(boolean isCorrectWords) { 
+    private String getTypedMaskedIf(boolean isCorrectWords) { 
         String[] typedList = Splitting.splitAfter(typed, ' ');
         String[] wordsList = Splitting.splitAfter(words, ' ');
 
@@ -77,11 +78,10 @@ public class TypingTest {
             String typedWord = typedList[i];
             boolean isCorrectWord = isCorrectSoFar(typedWord, wordsList[i]);
             
-            ret += maskIf(typedWord, isCorrectWords ? !isCorrectWord : isCorrectWord);
+            ret += maskIf(typedWord, isCorrectWords ? isCorrectWord : !isCorrectWord);
         }
         return ret;
     }
-
 
     private boolean isCorrectSoFar(String word, String solution) {
         for (int i = 0; i < word.length(); i++)
@@ -91,7 +91,6 @@ public class TypingTest {
         return true;
     }
 
-    //"helo " -> "     "
     private String maskIf(String s, boolean condition) {
         if (!condition) return s;
         String masked = "";
