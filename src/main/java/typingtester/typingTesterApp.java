@@ -16,6 +16,7 @@ public class TypingTesterApp extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("blank.png")));
+        stage.setResizable(false);
 
         SceneController sceneController = new SceneController(stage);
         sceneController.setTypingTest();

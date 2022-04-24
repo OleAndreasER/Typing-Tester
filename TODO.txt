@@ -1,10 +1,6 @@
 TODO:
-Average
-CSS
-Chart styling
-Better styling in general
 Documentation
-? Fix unknown bug in the test.
+Think about testing
 
 DONE:
 Loading from file.
@@ -17,3 +13,8 @@ Typing test stats. TypingTest can make TypingTestStats object.
 Saving stats.
 Presenting stats better after test.
 Graphing stats, PBs
+Average
+CSS
+Chart styling
+Better styling in general
+? Fix unknown bug in the test. (Was probably a bug with alt key)
