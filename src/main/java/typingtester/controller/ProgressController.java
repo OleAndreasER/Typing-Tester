@@ -14,7 +14,7 @@ import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.MinimalTestStats;
 import typingtester.model.Progress;
 
-public class ProgressController extends SceneControllerController {
+public class ProgressController extends PageController {
 
     @FXML
     Label progressStats;

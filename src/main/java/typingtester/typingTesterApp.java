@@ -18,7 +18,7 @@ public class TypingTesterApp extends Application {
         stage.getIcons().add(new Image(getClass().getResourceAsStream("blank.png")));
         stage.setResizable(false);
 
-        SceneController sceneController = new SceneController(stage);
+        PageSwitcher sceneController = new PageSwitcher(stage);
         sceneController.setTypingTest();
     }
 }

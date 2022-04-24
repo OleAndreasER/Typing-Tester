@@ -13,7 +13,7 @@ import typingtester.model.TypingTestStats;
 import typingtester.timing.TestTimer;
 import typingtester.timing.TestTimerListener;
 
-public class TypingTestController extends SceneControllerController implements TestTimerListener {
+public class TypingTestController extends PageController implements TestTimerListener {
     private TypingTest typingTest;
     private TestTimer testTimer;
     private static final int testTime = 60;
@@ -37,7 +37,6 @@ public class TypingTestController extends SceneControllerController implements T
 
         else return;
 
-        
         if (!testTimerIsOn()) startNewTestTimer();
 
         displayTest();

@@ -10,7 +10,7 @@ import typingtester.filehandling.MinimalFileHandler;
 import typingtester.model.Progress;
 import typingtester.model.TypingTestStats;
 
-public class ResultsController extends SceneControllerController {
+public class ResultsController extends PageController {
     private TypingTestStats stats;
 
     @FXML
