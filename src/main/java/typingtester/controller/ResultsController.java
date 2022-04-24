@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import typingtester.SceneController;
+import typingtester.filehandling.FileHandling;
+import typingtester.model.Progress;
 import typingtester.model.TypingTestStats;
 
 public class ResultsController {
@@ -27,10 +29,12 @@ public class ResultsController {
     @FXML
     public void displayStats() {
         wpmAndAccuracy.setText(String.format(
-            "%.2f WPM\n%.2f%% accuracy",
+            "%.2f WPM"+maybePB(stats.getWPM())+"\n"
+           +"%.2f%% accuracy",
+
             stats.getWPM(),
-            stats.getAccuracy())
-        );
+            stats.getAccuracy()
+        ));
 
         otherStats.setText(String.format(
             "%.2f raw WPM\n"
@@ -40,8 +44,12 @@ public class ResultsController {
             stats.getRawWPM(),
             stats.getCorrectWords(),
             stats.getIncorrectWords()
-            )
-        );
+        ));
+    }
+
+    private static String maybePB(double WPM) {
+        Progress progress = FileHandling.loadTests();
+        return progress.isWPMRecord(WPM) ? " (PB!!)" : "";
     }
 
     private static String maybePlural(int n) {

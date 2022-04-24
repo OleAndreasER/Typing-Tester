@@ -15,7 +15,7 @@ public class Progress {
 
     public MinimalStatFormat getWPMRecord() {
         double currentHighest = 0;
-        MinimalStatFormat record = new MinimalStatFormat();
+        MinimalStatFormat record = null;
         for (MinimalStatFormat test : tests) {
             if (test.getWPM() > currentHighest) {
                 currentHighest = test.getWPM();
@@ -23,6 +23,10 @@ public class Progress {
             }
         }
         return record;
+    }
+
+    public boolean isWPMRecord(double WPM) {
+        return WPM >= getWPMRecord().getWPM();
     }
 
     public List<Double> getWPMList() {
@@ -49,6 +53,7 @@ public class Progress {
     }
 
     public String toString() {
+        if (tests.isEmpty()) return "";
         String str = "";
         for (MinimalStatFormat test : tests) {
             str += test.asDisplayed()+"\n";
@@ -64,4 +69,5 @@ public class Progress {
         
         return total/tests.size();
     }
+
 }

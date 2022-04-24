@@ -38,6 +38,10 @@ public class ProgressController {
         plotWPMSeries();
 
         //Stats text
+        if (progress.getTestCount() == 0) {
+            progressStats.setText("No tests!");
+            return;
+        }
         MinimalStatFormat record = progress.getWPMRecord();
         String testCount = String.valueOf(progress.getTestCount());
         Progress latest = progress.getLatestTests(10);
