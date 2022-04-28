@@ -10,13 +10,13 @@ import typingtester.model.Splitting;
 public class SplittingTest {
 
     @Test
-    public void testSplit2() {
+    public void testsplit() {
 
         String[] expected = {"hi", "hi", ""};
 
         Assertions.assertTrue(Arrays.equals(
             expected,
-            Splitting.split2("hi hi ", ' ')
+            Splitting.split("hi hi ", ' ')
         ));
 
 
@@ -24,15 +24,15 @@ public class SplittingTest {
 
         Assertions.assertTrue(Arrays.equals(
             expected2,
-            Splitting.split2("hi", ' ')
+            Splitting.split("hi", ' ')
         ));
 
 
-        String[] expected3 = {"", ""};
+        String[] expected3 = {""};
 
         Assertions.assertTrue(Arrays.equals(
             expected3,
-            Splitting.split2("", ' ')
+            Splitting.split("", ' ')
         ));
     }
 
@@ -62,9 +62,6 @@ public class SplittingTest {
         ));
 
         String[] expected4 = {" "};
-
-        System.out.println('i'+"".split(" ")[0]+'i');
-        System.out.println(" ".split(" ").length+"' '");
 
         Assertions.assertTrue(Arrays.equals(
             expected4,

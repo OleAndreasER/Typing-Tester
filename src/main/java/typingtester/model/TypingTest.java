@@ -121,8 +121,8 @@ public class TypingTest {
     }
 
     private boolean isCorrectKeyPress(String c) {
-        String[] typedArr = Splitting.split2(typed, ' ');
-        String[] wordsArr = Splitting.split2(words, ' ');
+        String[] typedArr = Splitting.split(typed, ' ');
+        String[] wordsArr = Splitting.split(words, ' ');
         String lastTyped = typedArr[typedArr.length - 1];
         String correspondingWord = wordsArr[typedArr.length -1];
 
