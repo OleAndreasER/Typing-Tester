@@ -24,7 +24,7 @@ public class Progress {
         return record;
     }
 
-    public boolean isWPMRecord(double WPM) {
+    public boolean WPMRecordIs(double WPM) {
         return WPM >= getWPMRecord().getWPM();
     }
 

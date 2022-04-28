@@ -45,7 +45,7 @@ public class ResultsController extends PageController {
 
         MinimalFileHandler fileHandler = new MinimalFileHandler();
         Progress progress = fileHandler.loadTests();
-        return progress.isWPMRecord(WPM) ? " (PB!!)" : "";
+        return progress.WPMRecordIs(WPM) ? " (PB!!)" : "";
     }
 
     private static String maybePlural(int n) {

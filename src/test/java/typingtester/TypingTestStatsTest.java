@@ -45,7 +45,7 @@ public class TypingTestStatsTest {
     public void testCorrectWords() { //Different standards from TypingTest
         TypingTestStats stats = statsAfterTyping(
             "x o x o x x",
-            "x x x x x x x"
+            "x x x x x x x "
         );
 
         Assertions.assertEquals(
@@ -85,15 +85,13 @@ public class TypingTestStatsTest {
             (correct/keyPresses) * 100, 
             stats2.getAccuracy()
         );
-
-
     }
 
     @Test
     public void testRawWPM() {
         TypingTestStats stats = statsAfterTyping(
             "x o x o x x",
-            "x x x x x x x"
+            "x x x x x x x "
         );
 
         Assertions.assertEquals(

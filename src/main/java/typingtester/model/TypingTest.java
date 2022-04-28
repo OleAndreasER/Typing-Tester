@@ -3,6 +3,7 @@ package typingtester.model;
 public class TypingTest {
 
     //The typing test is split on the caret. 
+
     //Right side:
     private String words;
     //Left side:
@@ -25,6 +26,9 @@ public class TypingTest {
     }
 
     public TypingTest(int seconds, String words) {
+        if (words.charAt(words.length()-1) != ' ')
+            throw new IllegalArgumentException("words does not end with a space");
+
         this.words = words;
         this.seconds = seconds;
     }
@@ -104,7 +108,6 @@ public class TypingTest {
     public void type(String c) {
         if (c.length() != 1)
             throw new IllegalArgumentException("Only one character.");
-
 
         if (isCorrectKeyPress(c)) correctKeyPresses++;
         else incorrectKeyPresses++;
