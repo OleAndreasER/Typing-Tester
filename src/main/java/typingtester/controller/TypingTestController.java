@@ -19,7 +19,7 @@ public class TypingTestController extends PageController implements TestTimerLis
     private static final int testTime = 60;
 
     @FXML
-    private Label whiteWords, blackWords, timeleft;
+    private Label whiteWords, blackWords, timeLeft;
 
     public void handleKeyPress(KeyEvent event) {
 
@@ -30,7 +30,7 @@ public class TypingTestController extends PageController implements TestTimerLis
             resetTest();
             return;
         }
-        else if (event.getCode() == KeyCode.ENTER) return; // "\n" is one char
+        else if (event.getCode() == KeyCode.ENTER) return; // "\n" is one char, but it should not be allowed
         
         else if (event.getText().length() == 1)
             typingTest.type(event.getText());
@@ -56,7 +56,7 @@ public class TypingTestController extends PageController implements TestTimerLis
     private void endTimer() {
         testTimer.stop();
         testTimer = null;
-        timeleft.setText("");
+        timeLeft.setText("");
     }
 
     //Creates new test, but does not start it.
@@ -89,7 +89,7 @@ public class TypingTestController extends PageController implements TestTimerLis
     //Timer listening
     @Override
     public void onSecond(int elapsedSeconds) {
-        timeleft.setText(String.valueOf(testTime - elapsedSeconds));
+        timeLeft.setText(String.valueOf(testTime - elapsedSeconds));
     }
 
     @Override

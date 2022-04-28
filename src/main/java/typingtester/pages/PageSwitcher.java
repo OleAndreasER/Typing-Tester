@@ -47,12 +47,13 @@ public class PageSwitcher {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
         Parent root = loader.load();
 
-        PageController controller = loader.getController();
         Scene scene = new Scene(root);
 
-        controller.setPageSwitcher(this);
-
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        PageController controller = loader.getController();
+
+        controller.setPageSwitcher(this);
 
         scene.setOnKeyPressed(event -> {
             controller.handleKeyPress(event);
