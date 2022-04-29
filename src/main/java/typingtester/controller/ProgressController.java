@@ -46,7 +46,7 @@ public class ProgressController extends PageController {
         progressStats.setText(statSegment("PB", record.asDisplayed())
                              +statSegment("Tests completed", testCount)
                              +statSegment("Last 10 tests", latest.toString())
-                             +statSegment("Average of 10", averageWPM));
+                             +statSegment("Average of 10", averageWPM+" WPM"));
     }
 
     private void plotWPMSeries() {
