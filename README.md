@@ -1,4 +1,4 @@
-TypingTester
+Typing Tester
 ------------
 Made in TDT4100 Object-Oriented Programming at NTNU.  
 It's a program for testing and improving typing speed. Tests are saved, and you can view stats.  
